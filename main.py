@@ -24,7 +24,7 @@ E_freq = A_freq * 2 ** (7 / 12)
 # get timesteps for each sample, T is note duration in seconds
 sample_rate = 44100
 T = 0.25
-t = np.linspace(0, T, T * sample_rate, False)
+t = np.linspace(0, T, T * sample_rate, False) # Returns T * sample_rate evenly spaced samples, calculated over the interval [0, T].
 
 # generate sine wave notes
 A_note = np.sin(A_freq * t * 2 * np.pi)
@@ -32,7 +32,7 @@ Csh_note = np.sin(Csh_freq * t * 2 * np.pi)
 E_note = np.sin(E_freq * t * 2 * np.pi)
 
 # concatenate notes
-audio = np.hstack((A_note, Csh_note, E_note))
+audio = np.hstack((A_note, Csh_note, E_note)) # concatenates elements into list column wise
 # normalize to 16-bit range
 audio *= 32767 / np.max(np.abs(audio))
 # convert to 16-bit data
