@@ -9,10 +9,10 @@ from wave_class import Wave
 # So the basic structure is to have a Wave object, on which all the computation/equations will be done.
 # This is then passed to sa.play_buffer() as a sound which can then be heard.
 # WE ARE DOING AS LESS LIBRARY-DEPENDENT COMPUTATION AS POSSIBLE. IMPERATIVE!!
-'''
+
 idk examine later
 https://simpleaudio.readthedocs.io/en/latest/tutorial.html#playing-audio-directly
-
+'''
 import numpy as np
 import simpleaudio as sa
 
