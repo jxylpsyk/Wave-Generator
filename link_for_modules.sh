@@ -1,0 +1,333 @@
+ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+ ipconfig
+ipconfig
+ipconfig
+ipconfig
+echo your device has been comprimised
