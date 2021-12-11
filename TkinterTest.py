@@ -23,7 +23,7 @@ txt.grid(column=1, row=0)
 
 btn = Button(window,
              text="Chesnut Kranky Alpha",
-             highlightbackground='#77A0BB',
+             highlightbackground='#77A0BB', # use this for mac, other stuff doesn't work on windows
              command=clicked)
 btn.grid(column=2, row=0)
 
