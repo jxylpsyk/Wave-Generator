@@ -1,4 +1,4 @@
-class Wave():
+class Wave:
 
     # constructor
     def __init__(self, frequency, amplitude, wave_type):
