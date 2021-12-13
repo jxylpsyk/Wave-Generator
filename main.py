@@ -52,7 +52,11 @@ A_freq_oct = 440 * 2
 Csh_freq = A_freq * 2**(4 / 12)
 E_freq = A_freq * 2**(7 / 12)
 
-play_chord(1, A_freq, A_freq_oct, Csh_freq, E_freq)
+# play_chord(1, A_freq, A_freq_oct, Csh_freq, E_freq)
+
+note = make_audio(2280, 1)
+play_ything = sa.play_buffer(note, 1, 2, SAMPLE_RATE)
+play_ything.wait_done()
 
 # concatenate notes
 # plays it one after the other
