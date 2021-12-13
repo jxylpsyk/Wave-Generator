@@ -5,6 +5,7 @@ from tkinter.filedialog import askopenfile
 
 root = tk.Tk()
 
+#this is just a random comment yay
 canvas = tk.Canvas(root, width = 600, height = 450)
 canvas.grid(columnspan=3,rowspan=3)
 #logo
