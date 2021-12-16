@@ -2,39 +2,17 @@
 import numpy as np
 import simpleaudio as sa
 
-# The Wave class is going to have all aspects of wave like frequency, amplitude, wave type and equation of wave
-# This can be modified according to how external libraries work
-
-from wave_class import Wave
+from lib.Core.wave_class import Wave
+from lib.Core.octave_5 import OCTAVE_5_NOTES
 
 # So the basic structure is to have a Wave object, on which all the computation/equations will be done.
 # This is then passed to sa.play_buffer() as a sound which can then be heard.
 # WE ARE DOING AS LESS LIBRARY-DEPENDENT COMPUTATION AS POSSIBLE. IMPERATIVE!!
-'''
-https://simpleaudio.readthedocs.io/en/latest/tutorial.html#playing-audio-directly
-'''
 
 SAMPLE_RATE = 44100
 
-notes = {
-    '5C': 440 * 2**(3 / 12),
-    '5Csh': 440 * 2**(4 / 12),
-    '5Db': 440 * 2**(4 / 12),
-    '5D': 440 * 2**(5 / 12),
-    '5Dsh': 440 * 2**(6 / 12),
-    '5Eb': 440 * 2**(6 / 12),
-    '5E': 440 * 2**(7 / 12),
-    '5F': 440 * 2**(8 / 12),
-    '5Fsh': 440 * 2**(9 / 12),
-    '5Gb': 440 * 2**(9 / 12),
-    '5G': 440 * 2**(10 / 12),
-    '5Gsh': 440 * 2**(11 / 12),
-    '5Ab': 440 * 2**(11 / 12),
-    '5A': 440 * 2,
-    '5Ash': 440 * 2**(13 / 12),
-    '5Bb': 440 * 2**(13 / 12),
-    '5B': 440 * 2**(14 / 12),
-}
+notes = OCTAVE_5_NOTES
+print(notes)
 
 
 # freq should be in hertz
@@ -75,26 +53,22 @@ def play_chord(time, *args) -> None:
 
 
 def play_song():
-    play_note(notes['5Bb'] / 2, 0.1)
-    play_note(notes['5C'], 0.1)
-    play_note(notes['5Csh'], 0.1)
-    play_note(notes['5Bb'] / 2, 0.1)
-    play_note(notes['5F'], 0.4)
-    play_note(notes['5F'], 0.4)
-    play_note(notes['5Eb'], 0.5)
+    play_note(notes['Bb'] / 2, 0.1)
+    play_note(notes['C'], 0.1)
+    play_note(notes['Csh'], 0.1)
+    play_note(notes['Bb'] / 2, 0.1)
+    play_note(notes['F'], 0.4)
+    play_note(notes['F'], 0.4)
+    play_note(notes['Eb'], 0.5)
 
-    play_note(notes['5Ab'] / 2, 0.1)
-    play_note(notes['5Bb'] / 2, 0.1)
-    play_note(notes['5C'], 0.1)
-    play_note(notes['5Ab'] / 2, 0.1)
-    play_note(notes['5Eb'], 0.4)
-    play_note(notes['5Eb'], 0.4)
-    play_note(notes['5Csh'], 0.5)
+    play_note(notes['Ab'] / 2, 0.1)
+    play_note(notes['Bb'] / 2, 0.1)
+    play_note(notes['C'], 0.1)
+    play_note(notes['Ab'] / 2, 0.1)
+    play_note(notes['Eb'], 0.4)
+    play_note(notes['Eb'], 0.4)
+    play_note(notes['Csh'], 0.5)
 
-
-# play_chord(1, notes['5A'], notes['5A']/2, notes['5Csh'] / 2, notes['5E'] / 2)
-
-# play_note(440 * 2**(-1 / 12), 1)
 
 play_song()
 

@@ -1,6 +1,9 @@
 import json
+import os
 
-with open('Json-lib/user_data.json', 'r') as openfile:
+path_to_json = os.path.join('', 'lib/Json-lib/user_data.json')
+
+with open(path_to_json, 'r') as openfile:
 
     # Reading from json file
     user_data = json.load(openfile)
