@@ -2,8 +2,8 @@
 import numpy as np
 import simpleaudio as sa
 
-from lib.Core.wave_class import Wave
-from lib.Core.octave_5 import OCTAVE_5_NOTES
+from applib.Core.wave_class import Wave
+from applib.Core.octave_5 import OCTAVE_5_NOTES
 
 # So the basic structure is to have a Wave object, on which all the computation/equations will be done.
 # This is then passed to sa.play_buffer() as a sound which can then be heard.
