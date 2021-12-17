@@ -1,6 +1,10 @@
-import matplotlib.pyplot as plt
-import numpy as np
+# Used to visualize the wave function
 
+import matplotlib.pyplot as plt
+
+from applib.Core.constants import SAMPLE_RATE
+
+# custom colors?
 plt.style.use('seaborn-dark')
 
 # this should be changed to selected wave array
@@ -8,14 +12,14 @@ plt.style.use('seaborn-dark')
 
 
 def create_graph_image(user_arr, freq) -> None:
-    single_osc = 44100 / freq
+    single_osc = SAMPLE_RATE / freq
 
     # converts a float value to the integer above it
     if not single_osc.is_integer():
         single_osc = round(single_osc + 0.5)
 
-    user_arr = user_arr[:int(single_osc)]
+    cut_arr = user_arr[:int(single_osc)]
     # user_arr = np.sin(user_arr * freq * 2 * np.pi)
 
-    plt.plot(user_arr)
+    plt.plot(cut_arr)
     plt.savefig('Temp/graph_img.jpg')

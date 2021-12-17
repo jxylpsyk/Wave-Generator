@@ -1,4 +1,6 @@
-from utils import messenger
+# Wave objects hold all wave-related info
+
+from utils import messenger as mss
 
 
 class Wave:
@@ -13,8 +15,8 @@ class Wave:
 
     # Call this to save the current wave
     def save_audio(self, wave_name) -> None:
-        messenger.save_info(self.audio_arr, wave_name)
+        mss.save_info(self.audio_arr, wave_name)
 
     # Call this when user selects a saved wave
     def load_audio(self, wave_name) -> None:
-        self.audio_arr = messenger.get_info(wave_name)
+        self.audio_arr = mss.get_info(wave_name)
