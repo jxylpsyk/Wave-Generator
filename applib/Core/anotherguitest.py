@@ -6,7 +6,7 @@ import simpleaudio
 from constants import SAMPLE_RATE
 from default_waves import *
 from audio import play_audio
-#making it all into 1 file else remove comment from above line and in theory it should work just fine!!!
+#CODE FROM SISTER FILES IS STORED IN THE COMMENT BELLOW!!!
 '''
 Constants
 '''
