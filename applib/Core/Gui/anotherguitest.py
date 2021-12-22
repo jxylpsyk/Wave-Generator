@@ -125,7 +125,7 @@ tsxt1 = tk.Label(text = "Wave Generator",height= 0
                  ,background="#ff8cad",)
 tsxt1.grid(row=1)
 
-txtbx1 = tk.Button(root,width=12,height=2,text="Square",background = '#2600ff',foreground="#ffffff",command = play_note(make_default_wave('square',5000,1),1))
+txtbx1 = tk.Button(root,width=12,height=2,text="Square",background = '#2600ff',foreground="#ffffff",command = play_audio(make_default_wave('square',5000,1)))
 txtbx1.grid(column = 1,row = 32)
 
 txtbx1 = tk.Button(root,width=12,height=2,text="SawTooth",background='#2600ff',foreground="#ffffff",command = make_default_wave('Sawtooth',5000,1))
