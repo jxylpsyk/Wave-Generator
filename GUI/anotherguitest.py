@@ -7,6 +7,111 @@ from ..applib.Core.constants import SAMPLE_RATE
 from ..applib.Core.default_waves import *
 from ..applib.Core.audio import play_audio
 #CODE FROM SISTER FILES IS STORED IN THE COMMENT BELLOW!!!
+
+
+# Last updated on 22nd of December, Two Thousand Twenty One years after the birth of Christ
+
+
+"""
+wave_class.py 
+
+# Wave objects hold all wave-related info
+
+from utils import messenger as mss
+
+
+class Wave:
+
+    # constructor
+    def __init__(self, audio_arr=[]):
+        self.audio_arr = audio_arr
+
+    # Call this to set a pre-defined audio array to the Wave object instead of creating one
+    def set_audio(self, audio_arr):
+        self.audio_arr = audio_arr
+
+    # Call this to save the current wave
+    def save_audio(self, wave_name) -> None:
+        mss.save_info(self.audio_arr, wave_name)
+
+    # Call this when user selects a saved wave
+    def load_audio(self, wave_name) -> None:
+        self.audio_arr = mss.get_info(wave_name)
+
+"""
+
+
+"""
+wave_opperations.py 
+
+from constants import SAMPLE_RATE
+
+
+def avg_wave(audio_arr1, audio_arr2):
+    return (audio_arr1 + audio_arr2) / 2
+
+"""
+'''
+audio.py
+
+
+# Functions to play audio and create playable arrays
+
+import numpy as np
+import simpleaudio as sa
+
+from constants import SAMPLE_RATE
+
+
+# freq should be in hertz
+# might need to make this private
+def make_audio(freq, time) -> np.ndarray:
+
+    # time is note duration in seconds
+    # Returns time * SAMPLE_RATE evenly spaced samples, calculated over the interval [0, T].
+    t = np.linspace(0, time, int(SAMPLE_RATE * time), False)
+
+    # generate sine wave notes
+    # range(-1, 1)
+    note = np.sin(freq * t * 2 * np.pi)  # freq in hertz
+    audio = note
+
+    # normalize to 16-bit range
+    audio *= 32767 / np.max(np.abs(audio))  # highest value is in 16-bit range
+
+    # convert to 16-bit data
+    audio = audio.astype(np.int16)
+
+    return audio
+
+
+def play_note(freq, time) -> None:
+    note = make_audio(freq, time)
+
+    play_obj = sa.play_buffer(note, 1, 2, SAMPLE_RATE)
+    play_obj.wait_done()
+
+
+def play_audio(audio_arr):
+    # normalize to 16-bit range
+    audio_arr *= 32767 / np.max(
+        np.abs(audio_arr))  # highest value is in 16-bit range
+
+    # convert to 16-bit data
+    audio_arr = audio_arr.astype(np.int16)
+
+    play_obj = sa.play_buffer(audio_arr, 1, 2, SAMPLE_RATE)
+    play_obj.wait_done()
+
+
+def play_chord(time, *args) -> None:
+    note_list = [make_audio(freq, time) for freq in args]
+
+    for note in note_list:
+        play_obj = sa.play_buffer(note, 1, 2, SAMPLE_RATE)
+
+    play_obj.wait_done()
+'''
 '''
 Constants
 '''
@@ -159,7 +264,7 @@ txtbx1 = tk.Button(
     background='#c800ff',
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('triangle', 200, 1)))
-txtbx1.grid(column=1, row=35)
+txtbx1.grid(column=100, row=1)
 
 txtbx1 = tk.Button(
     root,
