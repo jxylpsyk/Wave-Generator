@@ -1,6 +1,6 @@
-# Wave objects hold all wave-related info
+from ...utils import messenger as mss
 
-from utils import messenger as mss
+# Wave objects hold all wave-related info
 
 
 class Wave:

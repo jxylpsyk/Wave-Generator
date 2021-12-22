@@ -3,7 +3,7 @@
 import json
 import os
 
-path_to_json = os.path.join('', 'applib/Json-lib/user_data.json')
+path_to_json = os.path.join('', 'App/applib/Json-lib/user_data.json')
 
 with open(path_to_json, 'r') as openfile:
 
