@@ -3,7 +3,7 @@
 import numpy as np
 import math
 
-from applib.Core.constants import SAMPLE_RATE
+from constants import SAMPLE_RATE
 
 
 # region Math functions

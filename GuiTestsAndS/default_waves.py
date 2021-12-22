@@ -3,7 +3,7 @@
 import numpy as np
 import math
 
-from applib.Core.constants import SAMPLE_RATE
+from constants import SAMPLE_RATE
 
 
 # region Math functions
@@ -58,3 +58,7 @@ def make_default_wave(wave_type, freq, time):
                 '.\nChoose from sin, triangle, sawtooth and square')
     else:
         raise TypeError('First arguement should be of type str')
+
+
+wave_type = "sin"    
+make_default_wave(wave_type,1000,100)
