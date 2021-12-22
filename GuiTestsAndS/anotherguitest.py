@@ -1,5 +1,7 @@
 import tkinter as tk
 from PIL import Image,ImageTk,ImageDraw
+
+from default_waves import *
 '''
 colours pinkish red #ff8cad
 mellow yellow #ffff8c
@@ -18,7 +20,8 @@ canvas.grid(columnspan=15,rowspan=100)
 box = tk.Canvas(root,height = 900, width = 1200, background = "#ffff8c")
 box.grid(column= 15,row=1,columnspan=100,rowspan=100)
 
-tsxt1 = tk.Label(text = "Wave Generator",height= 0,background="#ff8cad",)
+tsxt1 = tk.Label(text = "Wave Generator",height= 0
+                 ,background="#ff8cad",)
 tsxt1.grid(row=1)
 
 txtbx1 = tk.Button(root,width=12,height=2,text="Square",background = '#2600ff',foreground="#ffffff",)
