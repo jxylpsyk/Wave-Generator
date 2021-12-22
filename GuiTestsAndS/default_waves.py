@@ -8,6 +8,7 @@ from constants import SAMPLE_RATE
 
 # region Math functions
 def __cot(val):
+    if val == 0: return 0
     return (1 / math.tan(val))
 
 
