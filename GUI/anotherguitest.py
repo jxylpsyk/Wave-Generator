@@ -3,9 +3,9 @@ from PIL import Image, ImageTk, ImageDraw
 import numpy as np
 import math
 import simpleaudio
-from constants import SAMPLE_RATE
-from default_waves import *
-from audio import play_audio
+from ..applib.Core.constants import SAMPLE_RATE
+from ..applib.Core.default_waves import *
+from ..applib.Core.audio import play_audio
 #CODE FROM SISTER FILES IS STORED IN THE COMMENT BELLOW!!!
 '''
 Constants
@@ -170,5 +170,30 @@ txtbx1 = tk.Button(
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('sin', 200, 1)))
 txtbx1.grid(column=9, row=35)
+
+v2 = tk.DoubleVar()
+  
+def show2():
+      
+    sel = "Vertical Scale Value = " + str(v2.get()) 
+    l2.config(text = sel, font =("Courier", 14))
+  
+s2 = tk.Scale( root, variable = v2,
+           from_ = 50, to = 1,
+           orient = 'VERTICAL') 
+  
+l4 = tk.Label(root, text = "Vertical Scaler")
+  
+b2 = tk.Button(root, text ="Display Vertical",
+            command = show2,
+            bg = "purple", 
+            fg = "white")
+  
+l2 = tk.Label(root)
+  
+s2.pack(anchor = 'CENTER') 
+l4.pack()
+b2.pack()
+l2.pack()
 
 root.mainloop()
