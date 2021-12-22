@@ -37,25 +37,32 @@ def __square(x):
 
 def make_default_wave(wave_type, freq, time):
 
-    if wave_type.isalpha():
+    if not wave_type.isalpha():
 
-        base_arr = np.linspace(0, time, int(SAMPLE_RATE * time))
-
-        if wave_type.lower() == 'sin':
-            return [math.sin(i * freq * 2 * math.pi) for i in base_arr]
-
-        elif wave_type.lower() == 'triangle':
-            return [__triangle(i * freq) for i in base_arr]
-
-        elif wave_type.lower() == 'sawtooth':
-            return [__sawtooth(i * freq) for i in base_arr]
-
-        elif wave_type.lower() == 'square':
-            return [__square(i * freq) for i in base_arr]
-
-        else:
-            raise ValueError(
-                'No default wave called', wave_type,
-                '.\nChoose from sin, triangle, sawtooth and square')
-    else:
         raise TypeError('First arguement should be of type str')
+
+    base_arr = np.linspace(0, time, int(SAMPLE_RATE * time))
+
+    if wave_type.lower() == 'sin':
+        for index, i in enumerate(base_arr):
+            base_arr[index] = math.sin(i * freq * 2 * math.pi)
+        return base_arr
+
+    elif wave_type.lower() == 'triangle':
+        for index, i in enumerate(base_arr):
+            base_arr[index] = __triangle(i * freq)
+        return base_arr
+
+    elif wave_type.lower() == 'sawtooth':
+        for index, i in enumerate(base_arr):
+            base_arr[index] = __sawtooth(i * freq)
+        return base_arr
+
+    elif wave_type.lower() == 'square':
+        for index, i in enumerate(base_arr):
+            base_arr[index] = __square(i * freq)
+        return base_arr
+
+    else:
+        raise ValueError('No default wave called', wave_type,
+                         '.\nChoose from sin, triangle, sawtooth and square')

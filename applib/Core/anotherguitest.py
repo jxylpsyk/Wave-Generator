@@ -5,7 +5,7 @@ import math
 import simpleaudio
 from constants import SAMPLE_RATE
 from default_waves import *
-from audio import *
+from audio import play_audio
 #making it all into 1 file else remove comment from above line and in theory it should work just fine!!!
 '''
 Constants
@@ -131,40 +131,44 @@ tsxt1 = tk.Label(
 )
 tsxt1.grid(row=1)
 
-txtbx1 = tk.Button(root,
-                   width=12,
-                   height=2,
-                   text="Square",
-                   background='#2600ff',
-                   foreground="#ffffff",
-                   command=play_note(make_default_wave('square', 5000, 1), 1))
+txtbx1 = tk.Button(
+    root,
+    width=12,
+    height=2,
+    text="Square",
+    background='#2600ff',
+    foreground="#ffffff",
+    command=lambda: play_audio(make_default_wave('square', 200, 1)))
 txtbx1.grid(column=1, row=32)
 
-txtbx1 = tk.Button(root,
-                   width=12,
-                   height=2,
-                   text="SawTooth",
-                   background='#2600ff',
-                   foreground="#ffffff",
-                   command=make_default_wave('Sawtooth', 5000, 1))
+txtbx1 = tk.Button(
+    root,
+    width=12,
+    height=2,
+    text="SawTooth",
+    background='#2600ff',
+    foreground="#ffffff",
+    command=lambda: play_audio(make_default_wave('sawtooth', 200, 1)))
 txtbx1.grid(column=9, row=32)
 
-txtbx1 = tk.Button(root,
-                   width=12,
-                   height=2,
-                   text="Triangle",
-                   background='#c800ff',
-                   foreground="#ffffff",
-                   command=make_default_wave('triangle', 5000, 1))
+txtbx1 = tk.Button(
+    root,
+    width=12,
+    height=2,
+    text="Triangle",
+    background='#c800ff',
+    foreground="#ffffff",
+    command=lambda: play_audio(make_default_wave('triangle', 200, 1)))
 txtbx1.grid(column=1, row=35)
 
-txtbx1 = tk.Button(root,
-                   width=12,
-                   height=2,
-                   text="Sine",
-                   background='#c800ff',
-                   foreground="#ffffff",
-                   command=make_default_wave('sin', 5000, 1))
+txtbx1 = tk.Button(
+    root,
+    width=12,
+    height=2,
+    text="Sine",
+    background='#c800ff',
+    foreground="#ffffff",
+    command=lambda: play_audio(make_default_wave('sin', 200, 1)))
 txtbx1.grid(column=9, row=35)
 
 root.mainloop()
