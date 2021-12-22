@@ -36,6 +36,13 @@ def play_note(freq, time) -> None:
 
 
 def play_audio(audio_arr):
+    # normalize to 16-bit range
+    audio_arr *= 32767 / np.max(
+        np.abs(audio_arr))  # highest value is in 16-bit range
+
+    # convert to 16-bit data
+    audio_arr = audio_arr.astype(np.int16)
+
     play_obj = sa.play_buffer(audio_arr, 1, 2, SAMPLE_RATE)
     play_obj.wait_done()
 
