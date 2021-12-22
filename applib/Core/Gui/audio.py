@@ -3,7 +3,7 @@
 import numpy as np
 import simpleaudio as sa
 
-from applib.Core.constants import SAMPLE_RATE
+from constants import SAMPLE_RATE
 
 
 # freq should be in hertz
