@@ -22,4 +22,4 @@ def create_graph_image(user_arr, freq) -> None:
     # user_arr = np.sin(user_arr * freq * 2 * np.pi)
 
     plt.plot(cut_arr)
-    plt.savefig('Temp/graph_img.jpg')
+    plt.savefig('Temp/graph_img.jpg', bbox_inches='tight')

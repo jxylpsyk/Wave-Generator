@@ -35,6 +35,11 @@ def play_note(freq, time) -> None:
     play_obj.wait_done()
 
 
+def play_audio(audio_arr):
+    play_obj = sa.play_buffer(audio_arr, 1, 2, SAMPLE_RATE)
+    play_obj.wait_done()
+
+
 def play_chord(time, *args) -> None:
     note_list = [make_audio(freq, time) for freq in args]
 
