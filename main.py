@@ -2,9 +2,20 @@ import tkinter as tk
 from PIL import Image, ImageTk, ImageDraw
 import numpy as np
 
+from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import SAMPLE_RATE
-from App.applib.Core.default_waves import *
+from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
+
+# The main premise of the project is for the user to do manipulations on two sound waves
+# Therefore, there are two waves for the user to play around with
+
+# The two waves are set to A440 sine waves by default
+# TODO: on startup, make the waves initialize to the last saved wave
+
+user_wave1 = Wave(make_default_wave('sin', 440, 1))
+user_wave2 = Wave(make_default_wave('sin', 440, 1))
+
 #GUI
 '''
 colours pinkish red #ff8cad
