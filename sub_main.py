@@ -1,4 +1,6 @@
+from typing import final
 import App.applib.Core.constants as const
+import random
 
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.audio import play_note
@@ -28,7 +30,34 @@ def play_song():
     play_note(notes['Csh'], 0.5)
 
 
-play_song()
+def simple_perlin(target_l, num_elements):
+    final_l = []
+    random_index = random.randrange(0, len(target_l) - 1)
+    final_l.append(target_l[random_index])
+
+    for _ in range(num_elements):
+        random_index += 1 if random.random() >= 0.5 else -1
+        if random_index > len(target_l) - 1:
+            random_index -= 1
+        if random_index < 0:
+            random_index += 1
+
+        final_l.append(target_l[random_index])
+
+    return final_l
+
+
+def continuity_test():
+    key_list = [i for i in notes.keys()]
+
+    for key1 in simple_perlin(key_list, 55):
+        play_note(notes[key1], 0.03)
+        play_note(notes[key1], 0.02)
+
+
+continuity_test()
+
+# play_song()
 
 # concatenate notes
 # plays it one after the other
