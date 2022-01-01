@@ -48,7 +48,7 @@ def simple_perlin(target_l, num_elements):
 
 
 def continuity_test():
-    key_list = [i for i in notes.keys()]
+    key_list = list(notes.keys())
 
     for key1 in simple_perlin(key_list, 55):
         play_note(notes[key1], 0.03)
