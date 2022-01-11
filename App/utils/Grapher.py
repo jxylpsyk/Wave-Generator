@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 
-from applib.Core.constants import SAMPLE_RATE
+from ..applib.Core.constants import SAMPLE_RATE
 
 # custom colors?
 plt.style.use('seaborn-dark')
