@@ -1,5 +1,8 @@
 SAMPLE_RATE = 44100
 
+CHUNK = 1024 * 4
+CHANNELS = 1
+
 OCTAVE_5_NOTES = {
     'C': 440 * 2**(3 / 12),
     'Csh': 440 * 2**(4 / 12),
