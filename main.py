@@ -27,14 +27,35 @@ Plain Blanc #ffffff
 !!!ALWAYS KEEP MIN ROW AS 1
 '''
 
+
+class blueButton:
+    def __init__(self, wave_name, position_x, position_y, freq):
+        self.position_x = position_x
+        self.position_y = position_y
+
+        self.button = tk.Button(
+            root,
+            width=12,
+            height=2,
+            text=wave_name.capitalize(),
+            highlightbackground='#2610ff',
+            foreground="#ffffff",
+            command=lambda: play_audio(make_default_wave(wave_name, freq, 1)))
+
+    def display_button(self):
+        self.button.grid(column=self.position_x, row=self.position_y)
+
+
 root = tk.Tk()
 root.title("Wave Generator 0.6.9.420")
-canvas = tk.Canvas(
+
+left_box = tk.Canvas(
     root, height=900, width=300, background="#ff8cad"
 )  #,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
-canvas.grid(columnspan=15, rowspan=100)
-box = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
-box.grid(column=15, row=1, columnspan=100, rowspan=100)
+left_box.grid(columnspan=15, rowspan=100)
+
+canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
+canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
 
 tsxt1 = tk.Label(
     text="Wave Generatorrrrrr",
@@ -43,56 +64,18 @@ tsxt1 = tk.Label(
 )
 tsxt1.grid(row=1)
 
-txtbx1 = tk.Button(
-    root,
-    width=12,
-    height=2,
-    text="Square",
-    background='#2600ff',
-    foreground="#ffffff",
-    command=lambda: play_audio(make_default_wave('square', 200, 1)))
-txtbx1.grid(column=107, row=2)
+txtbx1 = blueButton('sawtooth', 106, 2, 200)
+txtbx1.display_button()
 
-txtbx2 = tk.Button(
-    root,
-    width=12,
-    height=2,
-    text="SawTooth",
-    background='#2600ff',
-    foreground="#ffffff",
-    command=lambda: play_audio(make_default_wave('sawtooth', 200, 1)))
-txtbx2.grid(column=111, row=2)
+txtbx2 = blueButton('square', 110, 2, 200)
+txtbx2.display_button()
 
-txtbx3 = tk.Button(
-    root,
-    width=12,
-    height=2,
-    text="Triangle",
-    background='#c800ff',
-    foreground="#ffffff",
-    command=lambda: play_audio(make_default_wave('triangle', 200, 1)))
-txtbx3.grid(column=105, row=2)
+txtbx3 = blueButton('sin', 104, 2, 200)
+txtbx3.display_button()
 
-txtbx4 = tk.Button(
-    root,
-    width=12,
-    height=2,
-    text="Sine",
-    background='#c800ff',
-    foreground="#ffffff",
-    command=lambda: play_audio(make_default_wave('sin', 200, 1)))
-txtbx4.grid(column=109, row=2)
+txtbx4 = blueButton('triangle', 108, 2, 200)
+txtbx4.display_button()
 
-class moreButtons:
-    txtbx5 = tk.Button(
-    root,
-    width=12,
-    height=2,
-    text="KarmaHurts",
-    background='#2600ff',
-    foreground="#ffffff",
-    command=lambda: play_audio(make_default_wave('sawtooth', 200, 1)))
-    txtbx5.grid(column=111, row=2)
 # v2 = tk.DoubleVar()
 
 # def show2():
