@@ -27,8 +27,19 @@ Plain Blanc #ffffff
 !!!ALWAYS KEEP MIN ROW AS 1
 '''
 
+class image:
+    def importImage(relPth,x_codds,y_codds):
+        graph = Image.open(relPth)
+        graphh = ImageTk.PhotoImage(graph)
+        graph_label = tk.label(image = graph)
+        graph_label.image = graph
+        graph_label.grid(column = x_codds,row = y_codds)
 
-class blueButton:
+class sliders:
+    #to be continued (P.S spelling error)
+        
+
+class blueWaveButton:
     def __init__(self, wave_name, position_x, position_y, freq):
         self.position_x = position_x
         self.position_y = position_y
@@ -41,6 +52,22 @@ class blueButton:
             highlightbackground='#2610ff',
             foreground="#ffffff",
             command=lambda: play_audio(make_default_wave(wave_name, freq, 1)))
+    def display_button(self):
+        self.button.grid(column=self.position_x, row=self.position_y)
+
+class blueButton:
+    def __init__(self, name, position_x, position_y):
+        self.position_x = position_x
+        self.position_y = position_y
+
+        self.button = tk.Button(
+            root,
+            width=12,
+            height=2,
+            text=name.capitalize(),
+            highlightbackground='#2610ff',
+            foreground="#ffffff")
+            #command=lambda: play_audio(make_default_wave(wave_name, freq, 1))
 
     def display_button(self):
         self.button.grid(column=self.position_x, row=self.position_y)
@@ -64,17 +91,19 @@ tsxt1 = tk.Label(
 )
 tsxt1.grid(row=1)
 
-txtbx1 = blueButton('sawtooth', 106, 2, 200)
+txtbx1 = blueWaveButton('sawtooth', 106, 2, 200)
 txtbx1.display_button()
 
-txtbx2 = blueButton('square', 110, 2, 200)
+txtbx2 = blueWaveButton('square', 110, 2, 200)
 txtbx2.display_button()
 
-txtbx3 = blueButton('sin', 104, 2, 200)
+txtbx3 = blueWaveButton('sin', 104, 2, 200)
 txtbx3.display_button()
 
-txtbx4 = blueButton('triangle', 108, 2, 200)
+txtbx4 = blueWaveButton('triangle', 108, 2, 200)
 txtbx4.display_button()
+
+saveBx1 = blueButton('Save', 108, 5)
 
 # v2 = tk.DoubleVar()
 
