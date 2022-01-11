@@ -51,9 +51,9 @@ txtbx1 = tk.Button(
     background='#2600ff',
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('square', 200, 1)))
-txtbx1.grid(column=1, row=32)
+txtbx1.grid(column=107, row=2)
 
-txtbx1 = tk.Button(
+txtbx2 = tk.Button(
     root,
     width=12,
     height=2,
@@ -61,9 +61,9 @@ txtbx1 = tk.Button(
     background='#2600ff',
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('sawtooth', 200, 1)))
-txtbx1.grid(column=9, row=32)
+txtbx2.grid(column=111, row=2)
 
-txtbx1 = tk.Button(
+txtbx3 = tk.Button(
     root,
     width=12,
     height=2,
@@ -71,9 +71,9 @@ txtbx1 = tk.Button(
     background='#c800ff',
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('triangle', 200, 1)))
-txtbx1.grid(column=1, row=35)
+txtbx3.grid(column=105, row=2)
 
-txtbx1 = tk.Button(
+txtbx4 = tk.Button(
     root,
     width=12,
     height=2,
@@ -81,8 +81,18 @@ txtbx1 = tk.Button(
     background='#c800ff',
     foreground="#ffffff",
     command=lambda: play_audio(make_default_wave('sin', 200, 1)))
-txtbx1.grid(column=9, row=35)
+txtbx4.grid(column=109, row=2)
 
+class moreButtons:
+    txtbx5 = tk.Button(
+    root,
+    width=12,
+    height=2,
+    text="KarmaHurts",
+    background='#2600ff',
+    foreground="#ffffff",
+    command=lambda: play_audio(make_default_wave('sawtooth', 200, 1)))
+    txtbx5.grid(column=111, row=2)
 # v2 = tk.DoubleVar()
 
 # def show2():

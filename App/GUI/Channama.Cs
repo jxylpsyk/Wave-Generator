@@ -1,1 +1,0 @@
-//channama rambaba masturi ai chalaki, jangali jangali maicha chelaba ji ma ki chappal kha
