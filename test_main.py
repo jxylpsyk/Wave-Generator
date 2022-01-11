@@ -64,3 +64,9 @@ class Detector:
         self.__stop_detection = False
         stream.close()
         audio.terminate()
+
+
+detector = Detector()
+detection_generator = detector.start_detection()
+while True:
+    print(detection_generator.__next__())
