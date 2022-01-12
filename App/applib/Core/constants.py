@@ -23,8 +23,15 @@ OCTAVE_5_NOTES = {
     'B': 440 * 2**(14 / 12),
 }
 
+WINDOW_HEIGHT = 900
+WINDOW_WIDTH = 1500
+
 PINKISH_RED = '#ff8cad'
 MELLOW_YELLOW = '#ffff8c'
 PRETTY_PURPLE = '#c800ff'
 BRATTY_BLUE = '#2600ff'
 PLAIN_BLANC = '#ffffff'
+
+
+
+# Do anything except 1500 arrat :)

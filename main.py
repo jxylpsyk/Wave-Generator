@@ -3,7 +3,7 @@ from PIL import Image, ImageTk, ImageDraw
 import numpy as np
 
 from App.applib.Core.wave_class import Wave
-from App.applib.Core.constants import SAMPLE_RATE
+from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
 
@@ -25,12 +25,12 @@ user_wave2 = Wave(make_default_wave('sin', 440, 1))
 root = tk.Tk()
 root.title("Wave Generator 0.6.9.420")
 left_box = tk.Canvas(
-    root, height=900, width=300, background="#ff8cad"
+    root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH, background="#ff8cad"
 )  #,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
-left_box.grid(columnspan=15, rowspan=100)
+left_box.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
-canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
-canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
+# canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
+# canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
 
 '''
 colours pinkish red #ff8cad
@@ -65,20 +65,21 @@ class image:
     #to be continued (P.S spelling error)
 
 class textBoxs:
-    def __init__(self,pos_x,pos_y):
+    def __init__(self,pos_x,pos_y,wdth):
         #karma
         self.pos_x= pos_x
         self.pos_y= pos_y
+        self.clspn = wdth
         self.textbox = tk.Text(
                     root,
-                    width = 12,
+                    width = wdth,
                     height = 2,
                     background= '#000000',
                     foreground='#FFFFFF',
                     )  
         
     def display_textbox(self):
-        self.textbox.grid(column=self.pos_x,row=self.pos_y)
+        self.textbox.grid(column=self.pos_x,row=self.pos_y,columnspan=self.clspn)
 
 
 class blueWaveButton:
@@ -117,33 +118,33 @@ class blueButton:
         self.button.grid(column=self.position_x, row=self.position_y)
 
 
+# tsxt1 = tk.Label(
+#     text="Wave Generatorrrrrr",
+#     height=0,
+#     background="#ff8cad",
+# )
+#txt1s.grid(row=1)
 
 
+txtinp = textBoxs(1299,425,108)
+txtinp.display_textbox()
 
-
-tsxt1 = tk.Label(
-    text="Wave Generatorrrrrr",
-    height=0,
-    background="#ff8cad",
-)
-tsxt1.grid(row=1)
-
-
-txtinp = textBoxs(108,10)
-
-txtbx1 = blueWaveButton('sawtooth', 106, 2, 200)
+txtbx1 = blueWaveButton('sawtooth', 1449, 50, 200)
 txtbx1.display_button()
 
-txtbx2 = blueWaveButton('square', 110, 2, 200)
+txtbx2 = blueWaveButton('square', 1399, 50, 200)
 txtbx2.display_button()
 
-txtbx3 = blueWaveButton('sin', 104, 2, 200)
+txtbx3 = blueWaveButton('sin', 1349, 50, 200)
 txtbx3.display_button()
 
-txtbx4 = blueWaveButton('triangle', 108, 2, 200)
+txtbx4 = blueWaveButton('triangle', 1299, 50, 200)
 txtbx4.display_button()
 
-saveBx1 = blueButton('Save', 108, 5)
+saveBx1 = blueButton('Save', 1449, 425)
+saveBx1.display_button()
+
+
 
 # v2 = tk.DoubleVar()
 
