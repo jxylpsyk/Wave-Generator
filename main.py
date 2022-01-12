@@ -23,6 +23,9 @@ user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
 
 #GUI
+'''
+!!!Windows Code Starts Here!!!
+'''
 if myOS == "Windows":
     root = tk.Tk()
     root.title("Wave Generator 0.6.9.420")
@@ -175,7 +178,9 @@ if myOS == "Windows":
     # l2.pack()
 
     root.mainloop()
-
+'''
+!!!OsX code Starts Here!!!
+'''
 elif myOS == "Darwin":
     root = tk.Tk()
     root.title("Wave Generator 0.6.9.420")
@@ -328,7 +333,9 @@ elif myOS == "Darwin":
     # l2.pack()
 
     root.mainloop()
-
+'''
+!!!Linux Code Starts Here!!!
+'''
 elif myOS == "Linux":
     root = tk.Tk()
     root.title("Wave Generator 0.6.9.420")
