@@ -28,9 +28,9 @@ Plain Blanc #ffffff
 '''
 
 class image:
-    def importImage(relPth,x_codds,y_codds):
+    def importImage(self,relPth,x_codds,y_codds):
         graph = Image.open(relPth)
-        graphh = ImageTk.PhotoImage(graph)
+        graph = ImageTk.PhotoImage(graph)
         graph_label = tk.label(image = graph)
         graph_label.image = graph
         graph_label.grid(column = x_codds,row = y_codds)
