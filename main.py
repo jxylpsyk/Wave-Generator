@@ -481,3 +481,7 @@ elif myOS == "Linux":
     # l2.pack()
 
     root.mainloop()
+    
+    
+else:
+    print('Please use a valid Opperating system [Windows,Darwin,Linux]')
