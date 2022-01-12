@@ -16,11 +16,7 @@ from App.applib.Core.audio import play_audio
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
 
-
-
-
 #GUI
-
 
 root = tk.Tk()
 root.title("Wave Generator 0.6.9.420")
@@ -31,7 +27,6 @@ left_box.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
 # canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
 # canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
-
 '''
 colours pinkish red #ff8cad
 mellow yellow #ffff8c
@@ -50,36 +45,37 @@ class coordinatesConversion:
 DUDE i dont think it is possible as it doesnt seem to be working, i checked the web and the only input options are in terms of column and row and the width is defined in terms of pixels 
 so yea... maybe another method can work.      
 """
-    
-    
+
 
 class image:
-    def importImage(self,relPth,x_codds,y_codds):
+    def importImage(self, relPth, x_codds, y_codds):
         graph = Image.open(relPth)
         graph = ImageTk.PhotoImage(graph)
-        graph_label = tk.label(image = graph)
+        graph_label = tk.label(image=graph)
         graph_label.image = graph
-        graph_label.grid(column = x_codds,row = y_codds)
+        graph_label.grid(column=x_codds, row=y_codds)
+
 
 #class sliders:
-    #to be continued (P.S spelling error)
+#to be continued (P.S spelling error)
+
 
 class textBoxs:
-    def __init__(self,pos_x,pos_y,wdth):
+    def __init__(self, pos_x, pos_y, wdth):
         #karma
-        self.pos_x= pos_x
-        self.pos_y= pos_y
+        self.pos_x = pos_x
+        self.pos_y = pos_y
         self.clspn = wdth
         self.textbox = tk.Text(
-                    root,
-                    width = wdth,
-                    height = 2,
-                    background= '#000000',
-                    foreground='#FFFFFF',
-                    )  
-        
+            root,
+            width=wdth,
+            height=2,
+            background='#000000',
+            foreground='#FFFFFF',
+        )
+
     def display_textbox(self):
-        self.textbox.grid(column=self.pos_x,row=self.pos_y,columnspan=self.clspn)
+        self.textbox.place(x=self.pos_x, y=self.pos_y)
 
 
 class blueWaveButton:
@@ -96,26 +92,27 @@ class blueWaveButton:
             background='#2610ff',
             foreground="#ffffff",
             command=lambda: play_audio(make_default_wave(wave_name, freq, 1)))
+
     def display_button(self):
-        self.button.grid(column=self.position_x, row=self.position_y)
+        self.button.place(x=self.position_x, y=self.position_y)
+
 
 class blueButton:
     def __init__(self, name, position_x, position_y):
         self.position_x = position_x
         self.position_y = position_y
 
-        self.button = tk.Button(
-            root,
-            width=12,
-            height=2,
-            text=name.capitalize(),
-            highlightbackground='#2610ff',
-            background='#2610ff',
-            foreground="#ffffff")
-            #command=lambda: play_audio(make_default_wave(wave_name, freq, 1))
+        self.button = tk.Button(root,
+                                width=12,
+                                height=2,
+                                text=name.capitalize(),
+                                highlightbackground='#2610ff',
+                                background='#2610ff',
+                                foreground="#ffffff")
+        #command=lambda: play_audio(make_default_wave(wave_name, freq, 1))
 
     def display_button(self):
-        self.button.grid(column=self.position_x, row=self.position_y)
+        self.button.place(x=self.position_x, y=self.position_y)
 
 
 # tsxt1 = tk.Label(
@@ -125,26 +122,23 @@ class blueButton:
 # )
 #txt1s.grid(row=1)
 
-
-txtinp = textBoxs(1299,425,108)
+txtinp = textBoxs(WINDOW_WIDTH - 600, 425, 50)
 txtinp.display_textbox()
 
-txtbx1 = blueWaveButton('sawtooth', 1449, 50, 200)
-txtbx1.display_button()
-
-txtbx2 = blueWaveButton('square', 1399, 50, 200)
-txtbx2.display_button()
-
-txtbx3 = blueWaveButton('sin', 1349, 50, 200)
-txtbx3.display_button()
-
-txtbx4 = blueWaveButton('triangle', 1299, 50, 200)
-txtbx4.display_button()
-
-saveBx1 = blueButton('Save', 1449, 425)
+saveBx1 = blueButton('Save', WINDOW_WIDTH - 200, 425)
 saveBx1.display_button()
 
+txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 600, 50, 200)
+txtbx1.display_button()
 
+txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 500, 50, 200)
+txtbx2.display_button()
+
+txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, 50, 200)
+txtbx3.display_button()
+
+txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
+txtbx4.display_button()
 
 # v2 = tk.DoubleVar()
 
