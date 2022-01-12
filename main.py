@@ -35,9 +35,25 @@ class image:
         graph_label.image = graph
         graph_label.grid(column = x_codds,row = y_codds)
 
-class sliders:
+#class sliders:
     #to be continued (P.S spelling error)
+
+class textBoxs:
+    def __init__(self,pos_x,pos_y):
+        #karma
+        self.pos_x= pos_x
+        self.pos_y= pos_y
+        self.textbox = tk.Text(
+                    #root,
+                    width = 12,
+                    height = 2,
+                    background= '#000000',
+                    foreground='#FFFFFF',
+                    )  
         
+    def display_textbox(self):
+        self.textbox.grid(column=self.pos_x,row=self.pos_y)
+
 
 class blueWaveButton:
     def __init__(self, wave_name, position_x, position_y, freq):
@@ -45,11 +61,12 @@ class blueWaveButton:
         self.position_y = position_y
 
         self.button = tk.Button(
-            root,
+            #root,
             width=12,
             height=2,
             text=wave_name.capitalize(),
             highlightbackground='#2610ff',
+            background='#2610ff',
             foreground="#ffffff",
             command=lambda: play_audio(make_default_wave(wave_name, freq, 1)))
     def display_button(self):
@@ -61,11 +78,12 @@ class blueButton:
         self.position_y = position_y
 
         self.button = tk.Button(
-            root,
+            #root,
             width=12,
             height=2,
             text=name.capitalize(),
             highlightbackground='#2610ff',
+            background='#2610ff',
             foreground="#ffffff")
             #command=lambda: play_audio(make_default_wave(wave_name, freq, 1))
 
@@ -90,6 +108,9 @@ tsxt1 = tk.Label(
     background="#ff8cad",
 )
 tsxt1.grid(row=1)
+
+
+txtinp = textBoxs(108,10)
 
 txtbx1 = blueWaveButton('sawtooth', 106, 2, 200)
 txtbx1.display_button()
