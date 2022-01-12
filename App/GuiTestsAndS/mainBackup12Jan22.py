@@ -16,22 +16,7 @@ from App.applib.Core.audio import play_audio
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
 
-
-
-
 #GUI
-
-
-root = tk.Tk()
-root.title("Wave Generator 0.6.9.420")
-left_box = tk.Canvas(
-    root, height=900, width=300, background="#ff8cad"
-)  #,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
-left_box.grid(columnspan=15, rowspan=100)
-
-canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
-canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
-
 '''
 colours pinkish red #ff8cad
 mellow yellow #ffff8c
@@ -41,17 +26,6 @@ Plain Blanc #ffffff
 
 !!!ALWAYS KEEP MIN ROW AS 1
 '''
-"""
-class coordinatesConversion:
-    def __init__(self ,x_codds,y_codds):
-        
-        self.x1 = x_codds * 15
-        self.y1 = y_codds * 9
-DUDE i dont think it is possible as it doesnt seem to be working, i checked the web and the only input options are in terms of column and row and the width is defined in terms of pixels 
-so yea... maybe another method can work.      
-"""
-    
-    
 
 class image:
     def importImage(self,relPth,x_codds,y_codds):
@@ -70,7 +44,7 @@ class textBoxs:
         self.pos_x= pos_x
         self.pos_y= pos_y
         self.textbox = tk.Text(
-                    root,
+                    #root,
                     width = 12,
                     height = 2,
                     background= '#000000',
@@ -87,7 +61,7 @@ class blueWaveButton:
         self.position_y = position_y
 
         self.button = tk.Button(
-            root,
+            #root,
             width=12,
             height=2,
             text=wave_name.capitalize(),
@@ -104,7 +78,7 @@ class blueButton:
         self.position_y = position_y
 
         self.button = tk.Button(
-            root,
+            #root,
             width=12,
             height=2,
             text=name.capitalize(),
@@ -117,9 +91,16 @@ class blueButton:
         self.button.grid(column=self.position_x, row=self.position_y)
 
 
+root = tk.Tk()
+root.title("Wave Generator 0.6.9.420")
 
+left_box = tk.Canvas(
+    root, height=900, width=300, background="#ff8cad"
+)  #,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
+left_box.grid(columnspan=15, rowspan=100)
 
-
+canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
+canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
 
 tsxt1 = tk.Label(
     text="Wave Generatorrrrrr",
