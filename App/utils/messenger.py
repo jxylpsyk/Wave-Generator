@@ -14,7 +14,7 @@ with open(path_to_json, 'r') as openfile:
 def save_info(wave_arr, wave_name) -> None:
     user_data["user-waves"].update({wave_name: wave_arr})
 
-    with open("Json-lib/user_data.json", "w") as outfile:
+    with open("App/applib/Json-lib/user_data.json", "w") as outfile:
         json.dump(user_data, outfile, indent=4)
 
 

@@ -32,4 +32,9 @@ PRETTY_PURPLE = '#c800ff'
 BRATTY_BLUE = '#2600ff'
 PLAIN_BLANC = '#ffffff'
 
+import platform
+
+SYSTEM_OS = platform.system()
+BUTTON_WIDTH = 12 if SYSTEM_OS == 'Windows' else 8
+
 # Do anything except 1500 arrat :)
