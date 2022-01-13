@@ -183,7 +183,7 @@ elif SYSTEM_OS == "Windows":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000', 650, 250,
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000', WINDOW_WIDTH - 650, 250,
                                print(12345))
 
 else:
