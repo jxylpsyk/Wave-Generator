@@ -55,9 +55,9 @@ def continuity_test():
         play_note(notes[key1], 0.02)
 
 
-continuity_test()
+# continuity_test()
 
-# play_song()
+play_song()
 
 # concatenate notes
 # plays it one after the other
