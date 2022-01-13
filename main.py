@@ -147,7 +147,7 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000',580,200,print(12345))
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000',440,200,print(12345))
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
