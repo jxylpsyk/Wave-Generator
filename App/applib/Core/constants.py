@@ -1,7 +1,21 @@
+# Platform dependencies
+# =====================
+
+import platform
+
+SYSTEM_OS = platform.system()
+BUTTON_WIDTH = 12 if SYSTEM_OS == 'Windows' else 8
+
+# Audio dependencies
+# =====================
+
 SAMPLE_RATE = 44100
 
 CHUNK = 1024 * 4
 CHANNELS = 1
+
+# Music dependencies
+# =====================
 
 OCTAVE_5_NOTES = {
     'C': 440 * 2**(3 / 12),
@@ -23,6 +37,9 @@ OCTAVE_5_NOTES = {
     'B': 440 * 2**(14 / 12),
 }
 
+# GUI dependencies
+# =====================
+
 WINDOW_HEIGHT = 800
 WINDOW_WIDTH = 1400
 
@@ -31,10 +48,3 @@ MELLOW_YELLOW = '#ffff8c'
 PRETTY_PURPLE = '#c800ff'
 BRATTY_BLUE = '#2600ff'
 PLAIN_BLANC = '#ffffff'
-
-import platform
-
-SYSTEM_OS = platform.system()
-BUTTON_WIDTH = 12 if SYSTEM_OS == 'Windows' else 8
-
-# Do anything except 1500 arrat :)

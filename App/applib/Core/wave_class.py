@@ -1,3 +1,5 @@
+from numpy import array as nparray
+
 from ...utils import messenger as mss
 
 # Wave objects hold all wave-related info
@@ -15,8 +17,12 @@ class Wave:
 
     # Call this to save the current wave
     def save_audio(self, wave_name) -> None:
+
+        # since ndarray is not json serializable, the array is cast into a list
         mss.save_info(list(self.audio_arr), wave_name)
 
     # Call this when user selects a saved wave
     def load_audio(self, wave_name) -> None:
-        self.audio_arr = mss.get_info(wave_name)
+
+        # since array is stored as a list, when fetching, the data is cast to an ndarray
+        self.audio_arr = nparray(mss.get_info(wave_name))

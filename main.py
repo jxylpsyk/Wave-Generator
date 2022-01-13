@@ -13,7 +13,7 @@ from App.applib.Core.audio import play_audio
 
 # The two waves are set to A440 sine waves by default
 # TODO: on startup, make the waves initialize to the last saved wave
-#TODO: Update windows UI
+# TODO: Update windows UI
 
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
@@ -131,8 +131,6 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    root.mainloop()
-
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
@@ -148,8 +146,6 @@ elif SYSTEM_OS == "Linux":
     txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, 50, 200)
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
-
-    root.mainloop()
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 600, 425, 50)
@@ -200,7 +196,7 @@ elif SYSTEM_OS == "Windows":
     # l2.pack()
     #endregion
 
-    root.mainloop()
-
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
+
+root.mainloop()

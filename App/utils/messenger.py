@@ -12,6 +12,9 @@ with open(path_to_json, 'r') as openfile:
 
 
 def save_info(wave_arr, wave_name) -> None:
+    if wave_name.isspace():
+        return
+
     user_data["user-waves"].update({wave_name: wave_arr})
 
     with open("App/applib/Json-lib/user_data.json", "w") as outfile:
