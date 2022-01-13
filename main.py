@@ -13,6 +13,7 @@ from App.applib.Core.audio import play_audio
 
 # The two waves are set to A440 sine waves by default
 # TODO: on startup, make the waves initialize to the last saved wave
+#TODO: Update windows UI
 
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
