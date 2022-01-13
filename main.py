@@ -110,23 +110,21 @@ class blueButton:
 
         self.button.place(x=self.position_x, y=self.position_y)
 
+
 class FreqDetectButtons:
-    def __init__(self,name, pos_x,pos_y, lambda_func):
+    def __init__(self, name, pos_x, pos_y, lambda_func):
         self.pos_y = pos_y
         self.pos_x = pos_x
 
-        self.button = tk.Button(
-            root,
-            width=BUTTON_WIDTH,
-            height= 2,
-            text= name.capitalize(),
-            highlightbackground='#004d00',
-            background= '#004d00',
-            foreground= '#ffffff',
-            command = lambda_func
-
-        )
-        self.button.place(x=self.pos_x,y=self.pos_y)
+        self.button = tk.Button(root,
+                                width=BUTTON_WIDTH,
+                                height=2,
+                                text=name.capitalize(),
+                                highlightbackground='#004d00',
+                                background='#004d00',
+                                foreground='#ffffff',
+                                command=lambda_func)
+        self.button.place(x=self.pos_x, y=self.pos_y)
 
 
 if SYSTEM_OS == "Darwin":
@@ -147,7 +145,8 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000',440,200,print(12345))
+    frqbx1 = FreqDetectButtons('Frequency Detector', WINDOW_WIDTH - 580, 200,
+                               lambda: print(12345))
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -165,15 +164,16 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000',580,200,print(12345))
-
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000', 580, 200,
+                               print(12345))
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
 
-    saveBx1 = blueButton('Save', WINDOW_WIDTH - 200, 140,
-                         lambda: focus_wave.save_audio(txtinp.return_text())
-                         if txtinp.return_text() != '' else 0)
+    saveBx1 = blueButton(
+        'Save', WINDOW_WIDTH - 200, 140,
+        lambda: focus_wave.save_audio(txtinp.return_text())
+        if txtinp.return_text() != '' else 0)
 
     txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 650, 50, 200)
 
@@ -183,8 +183,8 @@ elif SYSTEM_OS == "Windows":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000',650,250,print(12345))
-
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000', 650, 250,
+                               print(12345))
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
