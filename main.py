@@ -116,10 +116,10 @@ class blueButton:
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, 350, 50)
+    txtinp = textBox(WINDOW_WIDTH - 580, 130, 50)
 
     saveBx1 = blueButton(
-        'Save', WINDOW_WIDTH - 160, 350,
+        'Save', WINDOW_WIDTH - 160, 130,
         lambda: focus_wave.save_audio(txtinp.return_text())
         if txtinp.return_text() != '' else 0)
 
@@ -148,55 +148,57 @@ elif SYSTEM_OS == "Linux":
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
 elif SYSTEM_OS == "Windows":
-    txtinp = textBox(WINDOW_WIDTH - 600, 425, 50)
+    txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
 
-    saveBx1 = blueButton('Save', WINDOW_WIDTH - 200, 425)
+    saveBx1 = blueButton('Save', WINDOW_WIDTH - 200, 140,
+                         lambda: focus_wave.save_audio(txtinp.return_text())
+                         if txtinp.return_text() != '' else 0)
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 600, 50, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 650, 50, 200)
 
     txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 500, 50, 200)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, 50, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, 50, 200)
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
-
-    #region Testing GUI ig
-
-    # tsxt1 = tk.Label(
-    #     text="Wave Generatorrrrrr",
-    #     height=0,
-    #     background="#ff8cad",
-    # )
-    #txt1s.grid(row=1)
-
-    # =============================================================================
-
-    # v2 = tk.DoubleVar()
-
-    # def show2():
-
-    #     sel = "Vertical Scale Value = " + str(v2.get())
-    #     l2.config(text=sel, font=("Courier", 14))
-
-    # s2 = tk.Scale(root, variable=v2, from_=50, to=1, orient='vertical')
-
-    # l4 = tk.Label(root, text="Vertical Scaler")
-
-    # b2 = tk.Button(root,
-    #                text="Display Vertical",
-    #                command=show2,
-    #                bg="purple",
-    #                fg="white")
-
-    # l2 = tk.Label(root)
-
-    # s2.pack(anchor='center')
-    # l4.pack()
-    # b2.pack()
-    # l2.pack()
-    #endregion
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
 
 root.mainloop()
+
+# region Testing GUI ig
+
+# tsxt1 = tk.Label(
+#     text="Wave Generatorrrrrr",
+#     height=0,
+#     background="#ff8cad",
+# )
+# txt1s.grid(row=1)
+
+# =============================================================================
+
+# v2 = tk.DoubleVar()
+
+# def show2():
+
+#     sel = "Vertical Scale Value = " + str(v2.get())
+#     l2.config(text=sel, font=("Courier", 14))
+
+# s2 = tk.Scale(root, variable=v2, from_=50, to=1, orient='vertical')
+
+# l4 = tk.Label(root, text="Vertical Scaler")
+
+# b2 = tk.Button(root,
+#                text="Display Vertical",
+#                command=show2,
+#                bg="purple",
+#                fg="white")
+
+# l2 = tk.Label(root)
+
+# s2.pack(anchor='center')
+# l4.pack()
+# b2.pack()
+# l2.pack()
+# endregion
