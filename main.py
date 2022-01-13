@@ -10,10 +10,8 @@ from App.applib.Core.audio import play_audio
 # Therefore, there are two waves for the user to play around with
 
 # DETECT OS is done in constants.py
-
 # The two waves are set to A440 sine waves by default
 # TODO: on startup, make the waves initialize to the last saved wave
-# TODO: Update windows UI
 
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
@@ -111,6 +109,24 @@ class blueButton:
                                 command=lambda_func)
 
         self.button.place(x=self.position_x, y=self.position_y)
+
+class FreqDetectButtons:
+    def __init__(self,name, pos_x,pos_y, lambda_func):
+        self.pos_y = pos_y
+        self.pos_x = pos_x
+
+        self.button = tk.Button(
+            root,
+            width=BUTTON_WIDTH,
+            height= 2,
+            text= name.capitalize(),
+            highlightbackground='#004d00',
+            background= '#004d00',
+            foreground= '#ffffff',
+            command = lambda_func
+
+        )
+        self.button.place(x=self.pos_x,y=self.pos_y)
 
 
 if SYSTEM_OS == "Darwin":
