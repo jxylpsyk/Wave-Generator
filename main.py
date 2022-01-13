@@ -5,6 +5,7 @@ from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
+from App.applib.Core.Detective import *
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
@@ -15,8 +16,8 @@ from App.applib.Core.audio import play_audio
 
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
-
-focus_wave = user_wave1
+focus_wave = user_wave1  #YOLO
+#Detected Frequency
 
 #GUI
 root = tk.Tk()
@@ -185,6 +186,9 @@ elif SYSTEM_OS == "Windows":
 
     frqbx1 = FreqDetectButtons('Frequency Detector 50000', WINDOW_WIDTH - 650, 250,
                                print(12345))
+    lambe = tk.Label(foreground='#ffffff',highlightbackground='#004d00',
+                     background='#004d00',text= DetectedFrequency)
+
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
