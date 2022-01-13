@@ -147,6 +147,8 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000',580,200,print(12345))
+
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
@@ -163,6 +165,9 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000',580,200,print(12345))
+
+
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
 
@@ -177,6 +182,9 @@ elif SYSTEM_OS == "Windows":
     txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, 50, 200)
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
+
+    frqbx1 = FreqDetectButtons('Frequency Detector 50000',650,250,print(12345))
+
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
