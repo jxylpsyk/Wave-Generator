@@ -144,9 +144,9 @@ if SYSTEM_OS == "Darwin":
 
     txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, 50, 200)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 580, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector', WINDOW_WIDTH - 580, 200,
+    frqbx1 = FreqDetectButtons('Frequency Detector', WINDOW_WIDTH - 160, 200,
                                lambda: print(12345))
 
 elif SYSTEM_OS == "Linux":
@@ -165,7 +165,7 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000', 580, 200,
+    frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH-580, 200,
                                print(12345))
 
 elif SYSTEM_OS == "Windows":
