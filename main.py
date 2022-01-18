@@ -76,14 +76,13 @@ class Vertical_Slider:
     def __init__(self,pos_x,pos_y,Range_Start,Range_End):
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.Scale(
+        self.Slide = tk.Scale(
             root,
             from_ = Range_Start,
-            to = Range_End,
-            orient = VERTICAL
+            to = Range_End
         )
-        self.scale.pack()
-        self.scale.place(x=self.pos_x, y=self.pos_y)
+
+        self.Slide.place(x=self.pos_x, y=self.pos_y)
 
 
 class blueWaveButton:
@@ -181,6 +180,7 @@ elif SYSTEM_OS == "Linux":
     frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH-580, 200,
                                print(12345))
     Vslide1 = Vertical_Slider(580,50,0,200)
+
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
