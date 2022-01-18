@@ -194,8 +194,14 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH - 580, 200,
-                               print(12345))
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: button_start_detect())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detector.stop_detection())
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
     Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Windows":
