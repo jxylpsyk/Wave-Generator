@@ -165,7 +165,7 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-   frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH-580, 200,
+    frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH-580, 200,
                                print(12345))
 
 elif SYSTEM_OS == "Windows":
