@@ -1,43 +1,62 @@
 import tkinter as tk
-from PIL import Image, ImageTk  #, ImageDraw
+from PIL import Image, ImageTk
+from numpy.lib.function_base import delete
 
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
-from App.applib.Core.Detective import *
+from App.applib.Core.analyser import Detector
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
 
 # DETECT OS is done in constants.py
 # The two waves are set to A440 sine waves by default
-# TODO: on startup, make the waves initialize to the last saved wave
 
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
-focus_wave = user_wave1  #YOLO
-#Detected Frequency
+
+focus_wave = user_wave1
+# Detected Frequency
+
+detector = Detector()
+
+
+def button_start_detect():
+    def update_detect_label_rec():
+        try:
+            frequency_label['text'] = detect_gen.__next__()
+            root.after(2, update_detect_label_rec)
+        except StopIteration:
+            detector.stop_detection()
+            detect_gen.close()
+
+    detect_gen = detector.start_detection()
+
+    update_detect_label_rec()
+
 
 #GUI
 root = tk.Tk()
 root.title("Wave Generator 0.6.9.420")
-left_box = tk.Canvas(
+
+canvas = tk.Canvas(
     root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH, background="#ff8cad"
 )  # ,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
-left_box.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
-# canvas = tk.Canvas(root, height=900, width=1200, background="#ffff8c")
-# canvas.grid(column=15, row=1, columnspan=100, rowspan=100)
-'''
-colours pinkish red #ff8cad
-mellow yellow #ffff8c
-Pretty purple #c800ff
-Bratty blue #2600ff
-Plain Blanc #ffffff
+canvas.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
-!!!ALWAYS KEEP MIN ROW AS 1
-'''
+# region Classes
+
+class LinuxStuff:
+    if SYSTEM_OS=='Linux':
+        print('You are officially running the linux distribution ')
+        def FixAudio(self):
+            print('Hello World')
+            #trail of hello world to see when it stops working (TEMPORARY)
+
+
 
 
 class image:
@@ -71,6 +90,15 @@ class textBox:
 
     def return_text(self):
         return self.textbox.get(1.0, "end-1c")
+
+
+class Vertical_Slider:
+    def __init__(self, pos_x, pos_y, Range_Start, Range_End):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.Slide = tk.Scale(root, from_=Range_Start, to=Range_End)
+
+        self.Slide.place(x=self.pos_x, y=self.pos_y)
 
 
 class blueWaveButton:
@@ -128,6 +156,8 @@ class FreqDetectButtons:
         self.button.place(x=self.pos_x, y=self.pos_y)
 
 
+# endregion
+
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
 
@@ -146,8 +176,16 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector', WINDOW_WIDTH - 580, 200,
-                               lambda: print(12345))
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: button_start_detect())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detector.stop_detection())
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
+
+    Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -165,8 +203,15 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-   frqbx1 = FreqDetectButtons('Freq Detect', WINDOW_WIDTH-580, 200,
-                               print(12345))
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: button_start_detect())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detector.stop_detection())
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
+    Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
@@ -184,11 +229,16 @@ elif SYSTEM_OS == "Windows":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
 
-    frqbx1 = FreqDetectButtons('Frequency Detector 50000', WINDOW_WIDTH - 650, 250,
-                               print(12345))
-    lambe = tk.Label(foreground='#ffffff',highlightbackground='#004d00',
-                     background='#004d00',text= DetectedFrequency)
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: button_start_detect())
 
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detector.stop_detection())
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
+
+    Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')

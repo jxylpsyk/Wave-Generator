@@ -25,7 +25,7 @@ class Detector:
     # IMPERATIVE
 
     def __init__(self):
-        self.__stop_detection = False
+        self.is_detecting = False
         self.most_probable_frequency = 0
 
     def __find_highest_probable_frequency(self, noisy_array) -> int:
@@ -40,9 +40,10 @@ class Detector:
         return np.argmax(PSD)
 
     def stop_detection(self) -> None:
-        self.__stop_detection = True
+        self.is_detecting = False
 
     def start_detection(self) -> None:
+        self.is_detecting = True
         audio = pyaudio.PyAudio()
 
         stream = audio.open(format=FORMAT,
@@ -52,7 +53,7 @@ class Detector:
                             output=True,
                             frames_per_buffer=CHUNK)
 
-        while not self.__stop_detection:
+        while self.is_detecting:
             data = stream.read(CHUNK)
             data_np = np.frombuffer(data, dtype=np.int16)
 
@@ -61,6 +62,6 @@ class Detector:
 
             yield self.most_probable_frequency
 
-        self.__stop_detection = False
+        self.is_detecting = False
         stream.close()
         audio.terminate()
