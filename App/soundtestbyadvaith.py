@@ -90,7 +90,7 @@ Fsh43 = np.sin(Fsh4_freq * t3 * 2 * np.pi)
 
 #this one is for certain purposes
 empty_note1 = np.sin(19 * 0.05 * 2 * np.pi)
-empty_note2 = np.sin(19 * 0.05 * 2 * np.pi)
+empty_note2 = np.sin(19 * 0.051 * 2 * np.pi)
 
 # Audio data is stacked and formed in this step, along with changes to volumes of each note
 
