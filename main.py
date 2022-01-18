@@ -49,6 +49,15 @@ canvas.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
 # region Classes
 
+class LinuxStuff:
+    if SYSTEM_OS=='Linux':
+        print('You are officially running the linux distribution ')
+        def FixAudio(self):
+            print('Hello World')
+            #trail of hello world to see when it stops working (TEMPORARY)
+
+
+
 
 class image:
     def importImage(relPth, x_codds, y_codds):
