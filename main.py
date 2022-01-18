@@ -160,6 +160,7 @@ if SYSTEM_OS == "Darwin":
 
     frqbx1 = FreqDetectButtons('Frequency Detector', WINDOW_WIDTH - 580, 200,
                                lambda: print(12345))
+    Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -202,6 +203,7 @@ elif SYSTEM_OS == "Windows":
                                print(12345))
     lambe = tk.Label(foreground='#ffffff',highlightbackground='#004d00',
                      background='#004d00',text= DetectedFrequency)
+    Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 
 else:
