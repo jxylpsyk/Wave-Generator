@@ -244,38 +244,3 @@ else:
 
 root.mainloop()
 
-# region Testing GUI ig
-
-# tsxt1 = tk.Label(
-#     text="Wave Generatorrrrrr",
-#     height=0,
-#     background="#ff8cad",
-# )
-# txt1s.grid(row=1)
-
-# =============================================================================
-
-# v2 = tk.DoubleVar()
-
-# def show2():
-
-#     sel = "Vertical Scale Value = " + str(v2.get())
-#     l2.config(text=sel, font=("Courier", 14))
-
-# s2 = tk.Scale(root, variable=v2, from_=50, to=1, orient='vertical')
-
-# l4 = tk.Label(root, text="Vertical Scaler")
-
-# b2 = tk.Button(root,
-#                text="Display Vertical",
-#                command=show2,
-#                bg="purple",
-#                fg="white")
-
-# l2 = tk.Label(root)
-
-# s2.pack(anchor='center')
-# l4.pack()
-# b2.pack()
-# l2.pack()
-# endregion
