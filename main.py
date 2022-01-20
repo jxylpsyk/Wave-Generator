@@ -29,6 +29,8 @@ canvas.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
 # region Classes
 
+class ResizeGui:
+    print ('work  in  progress  .')
 
 class LinuxStuff:
     if SYSTEM_OS == 'Linux':
@@ -165,9 +167,9 @@ if SYSTEM_OS == "Darwin":
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, 350, 50)
+    txtinp = textBox(WINDOW_WIDTH - 580, 130, 50)
 
-    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, 350,
+    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, 130,
                          lambda: print(txtinp.return_text()))
 
     txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, 50, 200)
