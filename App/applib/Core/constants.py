@@ -43,6 +43,8 @@ OCTAVE_5_NOTES = {
 WINDOW_HEIGHT = 800
 WINDOW_WIDTH = 1400
 
+MyNewCuteConstant = 64
+
 PINKISH_RED = '#ff8cad'
 MELLOW_YELLOW = '#ffff8c'
 PRETTY_PURPLE = '#c800ff'
