@@ -1,10 +1,13 @@
+from math import trunc
 import tkinter as tk
 from PIL import Image, ImageTk
+from numpy.lib.function_base import delete
 
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
+from App.applib.Core.analyser import Detector
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
@@ -16,6 +19,43 @@ user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
 
 focus_wave = user_wave1
+# Detected Frequency
+
+detector = Detector()
+
+# region Prev detect logic
+# def button_start_detect():
+#     def update_detect_label_rec():
+#         global cancel_ID
+#         try:
+#             frequency_label['text'] = detect_gen.__next__()
+#             cancel_ID = root.after(2, update_detect_label_rec)
+#         except StopIteration:
+#             root.after_cancel(cancel_ID)
+#             detector.stop_detection()
+#             detect_gen.close()
+
+#     detect_gen = detector.start_detection()
+
+#     update_detect_label_rec()
+
+# endregion
+
+
+def detect_button(start=True):
+    def update_detect_label_rec():
+        global cancel_ID
+        if start:
+            frequency_label['text'] = detect_gen.__next__()
+            cancel_ID = root.after(2, update_detect_label_rec)
+        else:
+            detector.stop_detection()
+            root.after_cancel(cancel_ID)
+            detect_gen.close()
+
+    detect_gen = detector.start_detection()
+    update_detect_label_rec()
+
 
 #GUI
 root = tk.Tk()
@@ -156,6 +196,15 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: detect_button())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detect_button(start=False))
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
+
     Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Linux":
@@ -174,6 +223,14 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: detect_button())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detect_button(start=False))
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
     Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
 elif SYSTEM_OS == "Windows":
@@ -191,6 +248,15 @@ elif SYSTEM_OS == "Windows":
     txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, 50, 200)
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
+
+    frq_start = FreqDetectButtons('Frequency START', WINDOW_WIDTH - 580, 200,
+                                  lambda: button_start_detect())
+
+    frq_start = FreqDetectButtons('Frequency STOP', WINDOW_WIDTH - 380, 200,
+                                  lambda: detector.stop_detection())
+
+    frequency_label = tk.Label(text=0)
+    frequency_label.place(x=200, y=200)
 
     Vslide1 = Vertical_Slider(580, 50, 0, 200)
 
