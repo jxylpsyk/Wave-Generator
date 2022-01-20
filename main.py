@@ -78,7 +78,7 @@ class Vertical_Slider:
     def __init__(self, pos_x, pos_y, Range_Start, Range_End):
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.Slide = tk.Scale(root, from_=Range_Start, to=Range_End)
+        self.Slide = tk.Scale(root, from_=Range_Start, to=Range_End, length = 275)
 
         self.Slide.place(x=self.pos_x, y=self.pos_y)
 
