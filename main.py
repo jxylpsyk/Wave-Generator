@@ -156,7 +156,11 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    Vslide1 = Vertical_Slider(580, 50, 0, 200)
+    Vslide1 = Vertical_Slider(WINDOW_WIDTH - 160, 450, 0, 200)
+    Vslide2 = Vertical_Slider(WINDOW_WIDTH - 210, 450, 0, 200)
+    Vslide3 = Vertical_Slider(WINDOW_WIDTH - 260, 450, 0, 200)
+    Vslide4 = Vertical_Slider(WINDOW_WIDTH - 310, 450, 0, 200)
+
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -174,7 +178,10 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-    Vslide1 = Vertical_Slider(580, 50, 0, 200)
+    Vslide1 = Vertical_Slider(WINDOW_WIDTH - 160, 450, 0, 200)
+    Vslide2 = Vertical_Slider(WINDOW_WIDTH - 210, 450, 0, 200)
+    Vslide3 = Vertical_Slider(WINDOW_WIDTH - 260, 450, 0, 200)
+    Vslide4 = Vertical_Slider(WINDOW_WIDTH - 310, 450, 0, 200)
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
@@ -192,7 +199,11 @@ elif SYSTEM_OS == "Windows":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
 
-    Vslide1 = Vertical_Slider(580, 50, 0, 200)
+    Vslide1 = Vertical_Slider(WINDOW_WIDTH - 160, 450, 0, 200)
+    Vslide2 = Vertical_Slider(WINDOW_WIDTH - 210, 450, 0, 200)
+    Vslide3 = Vertical_Slider(WINDOW_WIDTH - 260, 450, 0, 200)
+    Vslide4 = Vertical_Slider(WINDOW_WIDTH - 310, 450, 0, 200)
+
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
