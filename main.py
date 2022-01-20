@@ -162,7 +162,25 @@ if SYSTEM_OS == "Darwin":
     Vslide2 = Vertical_Slider(WINDOW_WIDTH - 210, 450, 0, 200)
     Vslide3 = Vertical_Slider(WINDOW_WIDTH - 260, 450, 0, 200)
     Vslide4 = Vertical_Slider(WINDOW_WIDTH - 310, 450, 0, 200)
+    Vslide5 = Vertical_Slider(WINDOW_WIDTH - 360, 450, 0, 200)
+    Vslide6 = Vertical_Slider(WINDOW_WIDTH - 410, 450, 0, 200)
+    Vslide7 = Vertical_Slider(WINDOW_WIDTH - 460, 450, 0, 200)
+    Vslide8 = Vertical_Slider(WINDOW_WIDTH - 510, 450, 0, 200)
 
+    Vslide9 = Vertical_Slider(WINDOW_WIDTH - 560, 450, 0, 200)
+    Vslide10 = Vertical_Slider(WINDOW_WIDTH - 610, 450, 0, 200)
+    Vslide11 = Vertical_Slider(WINDOW_WIDTH - 660, 450, 0, 200)
+    Vslide12= Vertical_Slider(WINDOW_WIDTH - 710, 450, 0, 200)
+
+    Vslide13= Vertical_Slider(WINDOW_WIDTH - 760, 450, 0, 200)
+    Vslide14 = Vertical_Slider(WINDOW_WIDTH - 810, 450, 0, 200)
+    Vslide15 = Vertical_Slider(WINDOW_WIDTH - 860, 450, 0, 200)
+    Vslide16 = Vertical_Slider(WINDOW_WIDTH - 910, 450, 0, 200)
+
+    Vslide17 = Vertical_Slider(WINDOW_WIDTH - 160, 450, 0, 200)
+    Vslide18 = Vertical_Slider(WINDOW_WIDTH - 210, 450, 0, 200)
+    Vslide19 = Vertical_Slider(WINDOW_WIDTH - 260, 450, 0, 200)
+    Vslide20 = Vertical_Slider(WINDOW_WIDTH - 310, 450, 0, 200)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
