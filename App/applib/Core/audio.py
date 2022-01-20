@@ -8,7 +8,7 @@ from .constants import SAMPLE_RATE
 
 # freq should be in hertz
 # might need to make this private
-def make_audio(freq, time) -> np.ndarray:
+def __make_audio(freq, time) -> np.ndarray:
 
     # time is note duration in seconds
     # Returns time * SAMPLE_RATE evenly spaced samples, calculated over the interval [0, T].
@@ -29,7 +29,7 @@ def make_audio(freq, time) -> np.ndarray:
 
 
 def play_note(freq, time) -> None:
-    note = make_audio(freq, time)
+    note = __make_audio(freq, time)
 
     play_obj = sa.play_buffer(note, 1, 2, SAMPLE_RATE)
     play_obj.wait_done()
@@ -48,7 +48,7 @@ def play_audio(audio_arr):
 
 
 def play_chord(time, *args) -> None:
-    note_list = [make_audio(freq, time) for freq in args]
+    note_list = [__make_audio(freq, time) for freq in args]
 
     for note in note_list:
         play_obj = sa.play_buffer(note, 1, 2, SAMPLE_RATE)

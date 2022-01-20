@@ -29,18 +29,6 @@ canvas.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
 
 # region Classes
 
-class ResizeGui:
-    print ('work  in  progress  .')
-
-class LinuxStuff:
-    if SYSTEM_OS == 'Linux':
-        print('You are officially running the linux distribution ')
-
-        def FixAudio(self):
-            print('Hello World')
-            #trail of hello world to see when it stops working (TEMPORARY)
-
-
 class image:
     def importImage(relPth, x_codds, y_codds):
         graph = Image.open(relPth)
@@ -78,9 +66,18 @@ class Vertical_Slider:
     def __init__(self, pos_x, pos_y, Range_Start, Range_End):
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.Slide = tk.Scale(root, from_=Range_Start, to=Range_End, length = 275)
+        self.Slide = tk.Scale(root, from_=Range_Start, to=Range_End, length = 220)
 
         self.Slide.place(x=self.pos_x, y=self.pos_y)
+
+class HarmonicsLabel:
+    def __init__(self, num, pos_x, pos_y):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.num = num
+
+        self.label = tk.Label(text= f"H{self.num} ", width=5, anchor='center')
+        self.label.place(x=pos_x, y=pos_y)
 
 
 class blueWaveButton:
@@ -138,6 +135,49 @@ class FreqDetectButtons:
         self.button.place(x=self.pos_x, y=self.pos_y)
 
 
+def slydey():
+    Vslide1 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*0) ,WINDOW_HEIGHT - 270, 0, 200)
+    Vslide2 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*1) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide3 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*2) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide4 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*3) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide5 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*4) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide6 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*5) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide7 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*6) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide8 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*7) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide9 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*8) , WINDOW_HEIGHT - 270, 0, 200)
+    Vslide10 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*9), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide11 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*10), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide12 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*11), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide13 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*12), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide14 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*13), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide15 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*14), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide16 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*15), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide17 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*16), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide18 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*17), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide19 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*18), WINDOW_HEIGHT - 270, 0, 200)
+    Vslide20 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*19), WINDOW_HEIGHT - 270, 0, 200)
+
+def lables():
+    HarmonicsLabels1  = HarmonicsLabel( 20, WINDOW_WIDTH - 120 - (MyNewCuteConstant*0) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels2  = HarmonicsLabel( 19, WINDOW_WIDTH - 120 - (MyNewCuteConstant*1) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels3  = HarmonicsLabel( 18, WINDOW_WIDTH - 120 - (MyNewCuteConstant*2) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels4  = HarmonicsLabel( 17, WINDOW_WIDTH - 120 - (MyNewCuteConstant*3) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels5  = HarmonicsLabel( 16, WINDOW_WIDTH - 120 - (MyNewCuteConstant*4) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels6  = HarmonicsLabel( 15, WINDOW_WIDTH - 120 - (MyNewCuteConstant*5) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels7  = HarmonicsLabel( 14, WINDOW_WIDTH - 120 - (MyNewCuteConstant*6) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels8  = HarmonicsLabel( 13, WINDOW_WIDTH - 120 - (MyNewCuteConstant*7) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels9  = HarmonicsLabel( 12, WINDOW_WIDTH - 120 - (MyNewCuteConstant*8) , WINDOW_HEIGHT - 300)
+    HarmonicsLabels10 = HarmonicsLabel( 11, WINDOW_WIDTH - 120 - (MyNewCuteConstant*9),  WINDOW_HEIGHT - 300)
+    HarmonicsLabels11 = HarmonicsLabel( 10, WINDOW_WIDTH - 120 - (MyNewCuteConstant*10), WINDOW_HEIGHT - 300)
+    HarmonicsLabels12 = HarmonicsLabel( 9,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*11), WINDOW_HEIGHT - 300)
+    HarmonicsLabels13 = HarmonicsLabel( 8,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*12), WINDOW_HEIGHT - 300)
+    HarmonicsLabels14 = HarmonicsLabel( 7,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*13), WINDOW_HEIGHT - 300)
+    HarmonicsLabels15 = HarmonicsLabel( 6,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*14), WINDOW_HEIGHT - 300)
+    HarmonicsLabels16 = HarmonicsLabel( 5,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*15), WINDOW_HEIGHT - 300)
+    HarmonicsLabels17 = HarmonicsLabel( 4,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*16), WINDOW_HEIGHT - 300)
+    HarmonicsLabels18 = HarmonicsLabel( 3,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*17), WINDOW_HEIGHT - 300)
+    HarmonicsLabels19 = HarmonicsLabel( 2,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*18), WINDOW_HEIGHT - 300)
+    HarmonicsLabels20 = HarmonicsLabel( 1,  WINDOW_WIDTH - 120 - (MyNewCuteConstant*19), WINDOW_HEIGHT - 300)
 # endregion
 
 if SYSTEM_OS == "Darwin":
@@ -158,26 +198,8 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 200)
 
-    Vslide1 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*0) ,WINDOW_HEIGHT - 350, 0, 200)
-    Vslide2 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*1) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide3 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*2) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide4 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*3) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide5 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*4) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide6 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*5) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide7 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*6) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide8 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*7) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide9 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*8) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide10 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*9), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide11 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*10), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide12 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*11), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide13 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*12), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide14 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*13), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide15 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*14), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide16 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*15), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide17 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*16), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide18 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*17), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide19 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*18), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide20 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*19), WINDOW_HEIGHT - 350, 0, 200)
+    slydey()
+    lables()
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -195,28 +217,8 @@ elif SYSTEM_OS == "Linux":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
 
-
-
-    Vslide1 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*0) ,WINDOW_HEIGHT - 350, 0, 200)
-    Vslide2 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*1) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide3 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*2) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide4 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*3) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide5 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*4) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide6 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*5) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide7 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*6) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide8 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*7) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide9 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*8) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide10 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*9), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide11 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*10), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide12 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*11), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide13 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*12), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide14 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*13), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide15 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*14), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide16 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*15), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide17 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*16), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide18 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*17), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide19 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*18), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide20 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*19), WINDOW_HEIGHT - 350, 0, 200)
+    slydey()
+    lables()
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
@@ -234,26 +236,8 @@ elif SYSTEM_OS == "Windows":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
 
-    Vslide1 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*0) ,WINDOW_HEIGHT - 350, 0, 200)
-    Vslide2 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*1) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide3 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*2) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide4 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*3) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide5 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*4) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide6 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*5) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide7 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*6) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide8 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*7) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide9 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*8) , WINDOW_HEIGHT - 350, 0, 200)
-    Vslide10 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*9), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide11 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*10), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide12 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*11), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide13 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*12), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide14 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*13), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide15 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*14), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide16 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*15), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide17 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*16), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide18 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*17), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide19 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*18), WINDOW_HEIGHT - 350, 0, 200)
-    Vslide20 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*19), WINDOW_HEIGHT - 350, 0, 200)
+    slydey()
+    lables()
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
