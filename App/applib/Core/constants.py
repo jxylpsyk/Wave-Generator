@@ -1,7 +1,8 @@
+import platform
+
+
 # Platform dependencies
 # =====================
-
-import platform
 
 SYSTEM_OS = platform.system()
 BUTTON_WIDTH = 12 if SYSTEM_OS == 'Windows' else 8
@@ -44,6 +45,13 @@ WINDOW_HEIGHT = 800
 WINDOW_WIDTH = 1400
 
 MyNewCuteConstant = 64
+
+from ...utils import messenger
+user_dict = messenger.get_user_settings()
+
+BG_GRAPH = user_dict["bg-color"]
+FG_GRAPH = user_dict["fg-color"]
+LINE_COLOR = user_dict["line-color"]
 
 PINKISH_RED = '#ff8cad'
 MELLOW_YELLOW = '#ffff8c'

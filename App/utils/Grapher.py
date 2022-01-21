@@ -2,17 +2,19 @@
 
 import matplotlib.pyplot as plt
 
-from ..applib.Core.constants import SAMPLE_RATE
+# TODO: Implement interface module
+
+# To avoid circular imports
+from ..applib.Core import constants
+from .luminosity import black_or_white
 
 # custom colors?
-plt.style.use('seaborn-dark')
+# plt.style.use('seaborn-dark')
 
 # this should be changed to selected wave array
-# user_arr = np.linspace(0, 2, 44100 * 2)
-
 
 def create_graph_image(user_arr, freq) -> None:
-    single_osc = SAMPLE_RATE / freq
+    single_osc = constants.SAMPLE_RATE / freq
 
     # converts a float value to the integer above it
     if not single_osc.is_integer():
@@ -20,6 +22,14 @@ def create_graph_image(user_arr, freq) -> None:
 
     cut_arr = user_arr[:int(single_osc)]
     # user_arr = np.sin(user_arr * freq * 2 * np.pi)
+    
+    plt.figure(facecolor=constants.BG_GRAPH)
 
-    plt.plot(cut_arr)
+    ax = plt.axes()
+    ax.set_facecolor(constants.FG_COLOR)
+
+    [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.xaxis.get_ticklabels()]
+    [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.yaxis.get_ticklabels()]
+
+    plt.plot(cut_arr, color = constants.LINE_COLOR)
     plt.savefig('Temp/graph_img.jpg', bbox_inches='tight')

@@ -3,9 +3,20 @@
 import json
 import os
 
-path_to_json = os.path.join('', 'App/applib/Json-lib/user_data.json')
+def get_user_settings():
+    path_to_json_settings = os.path.join('', 'App/applib/Json-lib/user_settings.json')
 
-with open(path_to_json, 'r') as openfile:
+    with open(path_to_json_settings, 'r') as openfile:
+
+        user_settings = json.load(openfile)
+    
+    return user_settings
+
+
+
+path_to_json_wave = os.path.join('', 'App/applib/Json-lib/user_data.json')
+
+with open(path_to_json_wave, 'r') as openfile:
 
     # Reading from json file
     user_data = json.load(openfile)
