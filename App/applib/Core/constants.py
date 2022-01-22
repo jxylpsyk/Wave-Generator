@@ -58,3 +58,4 @@ MELLOW_YELLOW = '#ffff8c'
 PRETTY_PURPLE = '#c800ff'
 BRATTY_BLUE = '#2600ff'
 PLAIN_BLANC = '#ffffff'
+ListA = ['Sine Wave', 'Triagle Wave', 'Square Wave', 'Sawtooth Wave']

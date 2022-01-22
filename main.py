@@ -39,9 +39,18 @@ class image:
         graph_label.grid(column=x_codds, row=y_codds)
 
 
-# class sliders:
-# to be continued (P.S spelling error)
+class GraphSelectionUtility3000:
 
+    def __init__(self, pos_x , pos_y , grph_img):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        def WhenPressed():
+            for i in ListA:
+                Labela = tk.Label(root,Text=ListA[i])
+        self.Buton = tk.Button(root,Text="click Me", command=lambda: WhenPressed(),width=BUTTON_WIDTH, height=2)
+        self.poss_ = self.pos_y +20
+        self.Labela.place(x=self.pos_x, y=self.poss_)
+        self.Buton.place(x = self.pos_x, y = self.pos_y)
 
 class textBox:
     def __init__(self, pos_x, pos_y, wdth):
@@ -203,6 +212,7 @@ if SYSTEM_OS == "Darwin":
     lables()
 
     Grapher.create_graph_image(focus_wave.audio_arr, 440)
+    vsm = GraphSelectionUtility3000(300, 100, 27)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
@@ -222,6 +232,8 @@ elif SYSTEM_OS == "Linux":
 
     slydey()
     lables()
+    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+    vsm = GraphSelectionUtility3000(300,100,27)
 
 elif SYSTEM_OS == "Windows":
     txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
@@ -241,6 +253,8 @@ elif SYSTEM_OS == "Windows":
 
     slydey()
     lables()
+    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+
 
 else:
     print('Please use a valid Opperating system [Windows,MacOS,Linux]')
