@@ -21,6 +21,13 @@ with open(path_to_json_wave, 'r') as openfile:
     # Reading from json file
     user_data = json.load(openfile)
 
+def get_user_waves() -> list:
+    user_waves = user_data["user-waves"].keys()
+    if len(user_waves) != 0:
+        return list(user_waves)
+    return None
+
+
 
 def save_info(wave_arr, wave_name) -> None:
     if wave_name.isspace():
