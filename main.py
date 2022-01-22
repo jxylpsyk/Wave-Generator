@@ -13,6 +13,8 @@ from App.utils import Grapher, messenger
 # DETECT OS is done in constants.py
 # The two waves are set to A440 sine waves by default
 
+# Make the button color user editable, after the move to GUI folder, import luminosity
+
 user_wave1 = Wave(make_default_wave('sin', 440, 1))
 user_wave2 = Wave(make_default_wave('sin', 440, 1))
 
@@ -41,19 +43,6 @@ class image:
         graph_label.image = graph
         graph_label.grid(column=x_codds, row=y_codds)
 
-
-class GraphSelectionUtility3000:
-
-    def __init__(self, pos_x , pos_y , grph_img):
-        self.pos_x = pos_x
-        self.pos_y = pos_y
-        def WhenPressed():
-            for i in ListA:
-                Labela = tk.Label(root,Text=ListA[i])
-        self.Buton = tk.Button(root,Text="click Me", command=lambda: WhenPressed(),width=BUTTON_WIDTH, height=2)
-        self.poss_ = self.pos_y +20
-        self.Labela.place(x=self.pos_x, y=self.poss_)
-        self.Buton.place(x = self.pos_x, y = self.pos_y)
 
 class DropDown():
     def __init__(self, pos_x, pos_y) -> None:
@@ -147,7 +136,6 @@ class textBox:
     def return_text(self):
         return self.textbox.get(1.0, "end-1c")
 
-
 class Vertical_Slider:
     def __init__(self, pos_x, pos_y, Range_Start, Range_End):
         self.pos_x = pos_x
@@ -164,7 +152,6 @@ class HarmonicsLabel:
 
         self.label = tk.Label(text= f"H{self.num} ", width=5, anchor='center')
         self.label.place(x=pos_x, y=pos_y)
-
 
 class blueWaveButton:
     # style = ttk.style()
@@ -185,7 +172,6 @@ class blueWaveButton:
 
         self.button.place(x=self.position_x, y=self.position_y)
 
-
 class blueButton:
     # style = ttk.style()
     # style.configure('BW.TButton', foreground = '#ffffff', background = '#2610ff')
@@ -204,7 +190,6 @@ class blueButton:
 
         self.button.place(x=self.position_x, y=self.position_y)
 
-
 class FreqDetectButtons:
     def __init__(self, name, pos_x, pos_y, lambda_func):
         self.pos_y = pos_y
@@ -220,8 +205,7 @@ class FreqDetectButtons:
                                 command=lambda_func)
         self.button.place(x=self.pos_x, y=self.pos_y)
 
-
-def slydey():
+def render_sliders():
     Vslide1 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*0) ,WINDOW_HEIGHT - 270, 200, 0)
     Vslide2 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*1) , WINDOW_HEIGHT - 270, 200, 0)
     Vslide3 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*2) , WINDOW_HEIGHT - 270, 200, 0)
@@ -243,7 +227,7 @@ def slydey():
     Vslide19 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*18), WINDOW_HEIGHT - 270, 200, 0)
     Vslide20 = Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*19), WINDOW_HEIGHT - 270, 200, 0)
 
-def lables():
+def render_labels():
     HarmonicsLabels1  = HarmonicsLabel( 20, WINDOW_WIDTH - 120 - (MyNewCuteConstant*0) , WINDOW_HEIGHT - 300)
     HarmonicsLabels2  = HarmonicsLabel( 19, WINDOW_WIDTH - 120 - (MyNewCuteConstant*1) , WINDOW_HEIGHT - 300)
     HarmonicsLabels3  = HarmonicsLabel( 18, WINDOW_WIDTH - 120 - (MyNewCuteConstant*2) , WINDOW_HEIGHT - 300)
@@ -271,10 +255,9 @@ if SYSTEM_OS == "Darwin":
 
     txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
 
-    saveBx1 = blueButton(
-        'Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
-        lambda: focus_wave.save_audio(txtinp.return_text())
-        if txtinp.return_text() != '' else 0)
+    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
+                            lambda: focus_wave.save_audio(txtinp.return_text())
+                            if txtinp.return_text() != '' else 0)
 
     txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 200)
 
@@ -284,55 +267,58 @@ if SYSTEM_OS == "Darwin":
 
     txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 200)
 
-    slydey()
-    lables()
-
     dd = DropDown(200, 200)
 
-    Grapher.create_graph_image(focus_wave.audio_arr, 440)
-    # vsm = GraphSelectionUtility3000(300, 100, 27)
+    render_sliders()
+    render_labels()
+
+    Grapher.create_graph_image(focus_wave.audio_arr)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, 130, 50)
+    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
 
-    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, 130,
-                         lambda: print(txtinp.return_text()))
+    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
+                            lambda: focus_wave.save_audio(txtinp.return_text())
+                            if txtinp.return_text() != '' else 0)
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, 50, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 200)
 
-    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, 50, 200)
+    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 200)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, 50, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 200)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, 50, 200)
-
-    slydey()
-    lables()
-    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 200)
 
     dd = DropDown(200, 200)
-    # vsm = GraphSelectionUtility3000(300,100,27)
+
+    render_sliders()
+    render_labels()
+    
+    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+
 
 elif SYSTEM_OS == "Windows":
-    txtinp = textBox(WINDOW_WIDTH - 650, 143, 49)
+    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
 
-    saveBx1 = blueButton(
-        'Save', WINDOW_WIDTH - 200, 140,
-        lambda: focus_wave.save_audio(txtinp.return_text())
-        if txtinp.return_text() != '' else 0)
+    saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
+                            lambda: focus_wave.save_audio(txtinp.return_text())
+                            if txtinp.return_text() != '' else 0)
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 650, 50, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 650, WINDOW_HEIGHT - 750, 200)
 
-    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 500, 50, 200)
+    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 750, 200)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, 50, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, WINDOW_HEIGHT - 750, 200)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, 50, 200)
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, WINDOW_HEIGHT - 750, 200)
 
-    slydey()
-    lables()
+    dd = DropDown(200, 200)
+
+    render_sliders()
+    render_labels()
+
     Grapher.create_graph_image(focus_wave.audio_arr, 440)
 
 

@@ -7,13 +7,17 @@ import matplotlib.pyplot as plt
 # To avoid circular imports
 from ..applib.Core import constants
 from .luminosity import black_or_white
+from .analyser import AudioDetector
 
 # custom colors?
 # plt.style.use('seaborn-dark')
 
 # this should be changed to selected wave array
 
-def create_graph_image(user_arr, freq) -> None:
+
+def create_graph_image(user_arr) -> None:
+    freq = AudioDetector().find_highest_probable_frequency(user_arr)
+
     single_osc = constants.SAMPLE_RATE / freq
 
     # converts a float value to the integer above it

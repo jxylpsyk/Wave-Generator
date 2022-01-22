@@ -1,3 +1,6 @@
+# Used to determine whether the numbers in the graph image should be black or white
+
+
 from matplotlib.colors import hex2color
 
 def __round(num, decimal=0):
