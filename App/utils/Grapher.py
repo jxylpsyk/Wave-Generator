@@ -26,10 +26,10 @@ def create_graph_image(user_arr, freq) -> None:
     plt.figure(facecolor=constants.BG_GRAPH)
 
     ax = plt.axes()
-    ax.set_facecolor(constants.FG_COLOR)
+    ax.set_facecolor(constants.FG_GRAPH)
 
     [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.xaxis.get_ticklabels()]
     [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.yaxis.get_ticklabels()]
 
     plt.plot(cut_arr, color = constants.LINE_COLOR)
-    plt.savefig('Temp/graph_img.jpg', bbox_inches='tight')
+    plt.savefig('Images/graph_img.jpg', bbox_inches='tight')

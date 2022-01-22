@@ -5,6 +5,7 @@ from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
+from App.utils import Grapher
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
@@ -200,6 +201,8 @@ if SYSTEM_OS == "Darwin":
 
     slydey()
     lables()
+
+    Grapher.create_graph_image(focus_wave.audio_arr, 440)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
