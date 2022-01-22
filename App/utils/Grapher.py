@@ -33,3 +33,4 @@ def create_graph_image(user_arr, freq) -> None:
 
     plt.plot(cut_arr, color = constants.LINE_COLOR)
     plt.savefig('Images/graph_img.jpg', bbox_inches='tight')
+    plt.close()
