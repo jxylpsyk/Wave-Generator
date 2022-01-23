@@ -6,8 +6,18 @@ import simpleaudio as sa
 from .constants import SAMPLE_RATE
 
 
+def normalize_audio(audio_arr):
+    arr_copy = audio_arr
+    # normalize to 16-bit range
+    arr_copy *= 32767 / np.max(np.abs(arr_copy))  # highest value is in 16-bit range
+
+    # convert to 16-bit data
+    arr_copy = arr_copy.astype(np.int16)
+
+    return arr_copy
+
+
 # freq should be in hertz
-# might need to make this private
 def __make_audio(freq, time) -> np.ndarray:
 
     # time is note duration in seconds
@@ -17,15 +27,7 @@ def __make_audio(freq, time) -> np.ndarray:
     # generate sine wave notes
     # range(-1, 1)
     note = np.sin(freq * t * 2 * np.pi)  # freq in hertz
-    audio = note
-
-    # normalize to 16-bit range
-    audio *= 32767 / np.max(np.abs(audio))  # highest value is in 16-bit range
-
-    # convert to 16-bit data
-    audio = audio.astype(np.int16)
-
-    return audio
+    return normalize_audio(note)
 
 
 def play_note(freq, time) -> None:
@@ -36,14 +38,7 @@ def play_note(freq, time) -> None:
 
 
 def play_audio(audio_arr):
-    # normalize to 16-bit range
-    audio_arr *= 32767 / np.max(
-        np.abs(audio_arr))  # highest value is in 16-bit range
-
-    # convert to 16-bit data
-    audio_arr = audio_arr.astype(np.int16)
-
-    play_obj = sa.play_buffer(audio_arr, 1, 2, SAMPLE_RATE)
+    play_obj = sa.play_buffer(normalize_audio(audio_arr), 1, 2, SAMPLE_RATE)
     play_obj.wait_done()
 
 

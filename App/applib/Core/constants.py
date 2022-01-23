@@ -12,6 +12,7 @@ BUTTON_WIDTH = 12 if SYSTEM_OS == 'Windows' else 8
 
 SAMPLE_RATE = 44100
 
+FORMAT = 2
 CHUNK = 1024 * 4
 CHANNELS = 1
 

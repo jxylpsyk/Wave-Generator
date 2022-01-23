@@ -5,7 +5,8 @@ from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
-from App.utils import Grapher, messenger
+
+from App.utils import Grapher, messenger, wav_saver
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
@@ -253,19 +254,22 @@ def render_labels():
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
+    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54)
 
     saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
                             if txtinp.return_text() != '' else 0)
+    
+    save_wav_btn = blueButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+                            lambda: wav_saver.save_as_wav(focus_wave.audio_arr))
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 440)
 
-    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 200)
+    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 440)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 440)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 200)
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 440)
 
     dd = DropDown(200, 200)
 
@@ -283,13 +287,16 @@ elif SYSTEM_OS == "Linux":
                             lambda: focus_wave.save_audio(txtinp.return_text())
                             if txtinp.return_text() != '' else 0)
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 200)
+    save_wav_btn = blueButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+                            lambda: wav_saver.save_as_wav(focus_wave))
 
-    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 440)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 200)
+    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 440)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 440)
+
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 440)
 
     dd = DropDown(200, 200)
 
@@ -305,14 +312,17 @@ elif SYSTEM_OS == "Windows":
     saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
                             if txtinp.return_text() != '' else 0)
+    
+    save_wav_btn = blueButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+                        lambda: wav_saver.save_as_wav(focus_wave))
 
-    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 650, WINDOW_HEIGHT - 750, 200)
+    txtbx1 = blueWaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, 440)
 
-    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 750, 200)
+    txtbx2 = blueWaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, 440)
 
-    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 350, WINDOW_HEIGHT - 750, 200)
+    txtbx3 = blueWaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, 440)
 
-    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 200, WINDOW_HEIGHT - 750, 200)
+    txtbx4 = blueWaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, 440)
 
     dd = DropDown(200, 200)
 
