@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
@@ -11,7 +12,6 @@ from App.applib.utils import Grapher, messenger, wav_saver
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
 
-# DETECT OS is done in constants.py
 # The two waves are set to A440 sine waves by default
 
 # Make the button color user editable, after the move to GUI folder, import luminosity
@@ -27,11 +27,10 @@ root.title("Wave Generator 0.6.9.420")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 
 canvas = tk.Canvas(
-    root, height=WINDOW_HEIGHT, width=WINDOW_WIDTH, background="#ff8cad"
+    root, height=WINDOW_HEIGHT+10, width=WINDOW_WIDTH+10, background="#ff8cad"
 )  # ,insertborderwidth=10, highlightthickness=27,highlightcolor="#fda10f",highlightbackground="#fcabbf")
 
-# canvas.grid(columnspan=WINDOW_WIDTH, rowspan=WINDOW_HEIGHT)
-canvas.place(height=WINDOW_HEIGHT, width=WINDOW_WIDTH)
+canvas.place(x=-5, y=-5)
 
 
 # region Classes
@@ -279,12 +278,13 @@ if SYSTEM_OS == "Darwin":
     render_sliders()
     render_labels()
 
-    Grapher.create_graph_image(focus_wave.audio_arr)
+    # converts plt.Figure to a tk.Canvas
+    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
+    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54)
 
     saveBx1 = blueButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -306,7 +306,7 @@ elif SYSTEM_OS == "Linux":
     render_sliders()
     render_labels()
     
-    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 
 elif SYSTEM_OS == "Windows":
@@ -332,7 +332,7 @@ elif SYSTEM_OS == "Windows":
     render_sliders()
     render_labels()
 
-    Grapher.create_graph_image(focus_wave.audio_arr, 440)
+    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 
 else:

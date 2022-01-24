@@ -25,16 +25,19 @@ def create_graph_image(user_arr) -> None:
         single_osc = round(single_osc + 0.5)
 
     cut_arr = user_arr[:int(single_osc)]
-    # user_arr = np.sin(user_arr * freq * 2 * np.pi)
     
-    plt.figure(facecolor=constants.BG_GRAPH)
+    fig = plt.figure(facecolor=constants.BG_GRAPH)
 
-    ax = plt.axes()
+    plot1 = fig.add_subplot(111)
+    plot1.plot(cut_arr, color= constants.LINE_COLOR)
+
+    ax = fig.axes[0]
     ax.set_facecolor(constants.FG_GRAPH)
 
     [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.xaxis.get_ticklabels()]
     [t.set_color(black_or_white(constants.BG_GRAPH)) for t in ax.yaxis.get_ticklabels()]
 
-    plt.plot(cut_arr, color = constants.LINE_COLOR)
-    plt.savefig('Images/graph_img.jpg', bbox_inches='tight')
-    plt.close()
+    # plt.savefig('Images/graph_img.jpg', bbox_inches='tight')
+    # plt.close()
+
+    return fig
