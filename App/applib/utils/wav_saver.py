@@ -1,8 +1,8 @@
 import wave
 from tkinter import filedialog
 
-from ..applib.Core import constants
-from ..applib.Core import audio
+from ..Core import constants
+from ..Core import audio
 
 def save_as_wav(user_arr):
     file = filedialog.asksaveasfilename(title="Save", filetypes=(("audio file", "*.wav"), ("all files", "*.*")), defaultextension=".wav")

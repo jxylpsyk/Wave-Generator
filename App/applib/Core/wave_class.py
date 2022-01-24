@@ -1,6 +1,6 @@
 from numpy import array as nparray
 
-from ...utils import messenger as mss
+from ..utils import messenger as mss
 
 # Wave objects hold all wave-related info
 

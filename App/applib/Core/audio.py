@@ -40,6 +40,7 @@ def play_note(freq, time) -> None:
 def play_audio(audio_arr):
     play_obj = sa.play_buffer(normalize_audio(audio_arr), 1, 2, SAMPLE_RATE)
     play_obj.wait_done()
+    return audio_arr
 
 
 def play_chord(time, *args) -> None:

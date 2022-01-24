@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # TODO: Implement interface module
 
 # To avoid circular imports
-from ..applib.Core import constants
+from ..Core import constants
 from .luminosity import black_or_white
 from .analyser import AudioDetector
 

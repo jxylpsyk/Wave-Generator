@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ..applib.Core import constants
+from ..Core import constants
 
 class AudioDetector:
     def __init__(self):

@@ -6,7 +6,7 @@ from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
 
-from App.utils import Grapher, messenger, wav_saver
+from App.applib.utils import Grapher, messenger, wav_saver
 
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
@@ -161,6 +161,9 @@ class blueWaveButton:
         self.position_x = position_x
         self.position_y = position_y
 
+        def __focus():
+            focus_wave.audio_arr = play_audio(make_default_wave(wave_name, freq, 1))
+
         self.button = tk.Button(
             root,
             width=BUTTON_WIDTH,
@@ -169,7 +172,7 @@ class blueWaveButton:
             highlightbackground='#2610ff',
             background='#2610ff',
             foreground="#ffffff",
-            command=lambda: play_audio(make_default_wave(wave_name, freq, 1)))
+            command = __focus)
 
         self.button.place(x=self.position_x, y=self.position_y)
 

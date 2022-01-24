@@ -1,6 +1,5 @@
 import platform
 
-
 # Platform dependencies
 # =====================
 
@@ -47,7 +46,7 @@ WINDOW_WIDTH = 1400
 
 MyNewCuteConstant = 64
 
-from ...utils import messenger
+from ..utils import messenger
 user_dict = messenger.get_user_settings()
 
 BG_GRAPH = user_dict["bg-color"]
