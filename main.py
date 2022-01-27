@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+import sys
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
@@ -36,13 +36,23 @@ canvas.place(x=-5, y=-5)
 # region Classes
 
 class image:
+    def __init__(self,relPth, x_codds, y_codds):
+        self.x_codds = x_codds
+        self.y_codds = y_codds
+        self.graph = Image.open(relPth)
+        self.graph = ImageTk.PhotoImage(graph)
+        self.graph_label = tk.label(image=graph)
+        self.graph_label.image = graph
+        self.graph_label.place(x=self.x_codds, y=self.y_codds)
+
+    ''' 
     def importImage(relPth, x_codds, y_codds):
         graph = Image.open(relPth)
         graph = ImageTk.PhotoImage(graph)
         graph_label = tk.label(image=graph)
         graph_label.image = graph
         graph_label.grid(column=x_codds, row=y_codds)
-
+    '''
 
 class DropDown():
     def __init__(self, pos_x, pos_y) -> None:
@@ -60,7 +70,7 @@ class DropDown():
 
         self.photo = tk.PhotoImage(file='App/GUI/Media/arrow.png')
 
-        self.dd_button = tk.Button(self.text_frame, image=self.photo, compound='center', borderwidth=0, command= lambda: self.__toggle_list())
+        self.dd_button = tk.Button(self.text_frame, image=self.photo, compound='center', borderwidth=0, command=lambda: self.__toggle_list())
         self.dd_button.pack(side='right')
 
         self.t_label = tk.Label(self.text_frame, text=self.user_wave_names[0], width=20)
@@ -307,6 +317,10 @@ elif SYSTEM_OS == "Linux":
     render_labels()
     
     FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
+
+
+    #img1 = image("./Images/Figure_1.png", WINDOW_WIDTH - 900, 100)
+
 
 
 elif SYSTEM_OS == "Windows":
