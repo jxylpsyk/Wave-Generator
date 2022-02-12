@@ -49,8 +49,8 @@ MyNewCuteConstant = 64
 from ..utils import messenger
 user_dict = messenger.get_user_settings()
 
-BG_GRAPH = user_dict["bg-color"]
-FG_GRAPH = user_dict["fg-color"]
+BG_COLOR = user_dict["bg-color"]
+FG_COLOR = user_dict["fg-color"]
 LINE_COLOR = user_dict["line-color"]
 
 PINKISH_RED = '#ff8cad'

@@ -14,6 +14,7 @@ def black_or_white(hex_val):
     c_list = __hex2rgb(hex_val)
     luminosity = c_list[0] * 0.299 + c_list[1] * 0.587 + c_list[2] * 0.114
 
+
     return "#000000" if __round(luminosity) >= 128 else "#ffffff"
 
 
