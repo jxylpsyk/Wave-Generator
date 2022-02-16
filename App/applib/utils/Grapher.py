@@ -37,6 +37,8 @@ def create_graph_image(user_arr) -> None:
     [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.xaxis.get_ticklabels()]
     [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.yaxis.get_ticklabels()]
 
+    plt.tight_layout()
+
     # plt.savefig('Images/graph_img.jpg', bbox_inches='tight')
     # plt.close()
 
