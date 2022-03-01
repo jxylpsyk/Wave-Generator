@@ -5,30 +5,55 @@ import simpleaudio as sa
 print("integral frequencies work best")
 FUND = float(input("input fundamental frequency >>"))
 sample_rate = 44100
-T = 0.6
+T = 2
 t = np.linspace(0, T, int(T*sample_rate), False)
 print(" rules for typing loudness of harmonics")
 print("type in a value between 0 <= x <= 1")
 
-H2 = float(input("level of H2 >>"))
-H3 = float(input("level of H3 >>"))
-H4 = float(input("level of H4 >>"))
-H5 = float(input("level of H5 >>"))
-H6 = float(input("level of H6 >>"))
-H7 = float(input("level of H7 >>"))
-H8 = float(input("level of H8 >>"))
-H9 = float(input("level of H9 >>"))
-H10 = float(input("level of H10 >>"))
-H11 = float(input("level of H11 >>"))
-H12 = float(input("level of H12 >>"))
-H13 = float(input("level of H13 >>"))
-H14 = float(input("level of H14 >>"))
-H15 = float(input("level of H15 >>"))
-H16 = float(input("level of H16 >>"))
-H17 = float(input("level of H17 >>"))
-H18 = float(input("level of H18 >>"))
-H19 = float(input("level of H19 >>"))
-H20 = float(input("level of H20 >>"))
+
+# collecting slider values
+
+H2 = 0  # (input("level of H2 >>"))
+H3 = 0  # float(input("level of H3 >>"))
+H4 = 0  # float(input("level of H4 >>"))
+H5 = 0  # float(input("level of H5 >>"))
+H6 = 0  # float(input("level of H6 >>"))
+H7 = 0  # float(input("level of H7 >>"))
+H8 = 0  # float(input("level of H8 >>"))
+H9 = 0  # float(input("level of H9 >>"))
+H10 = 0  # float(input("level of H10 >>"))
+H11 = 0  # float(input("level of H11 >>"))
+H12 = 0  # float(input("level of H12 >>"))
+H13 = 0  # float(input("level of H13 >>"))
+H14 = 0  # float(input("level of H14 >>"))
+H15 = 0  # float(input("level of H15 >>"))
+H16 = 0  # float(input("level of H16 >>"))
+H17 = 0  #  float(input("level of H17 >>"))
+H18 = 0 #  float(input("level of H18 >>"))
+H19 = 0  # float(input("level of H19 >>"))
+H20 = 0  # float(input("level of H20 >>"))
+
+sldr_list = [ H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20]
+
+
+def freqassignfunc(numb,value):
+    sldr_list[(int(numb) - 2)] = float(value)
+
+
+print("all values of harmonics are 0 currently")
+print("type the number 'n' to select the n'th harmonic")
+print("then type the required value of the harmonic")
+w = "yes"
+while w.lower() == "yes" or w.lower() == "y":
+    numb1 = int(input("input the harmonic number(between 2 and 20)  >>> "))
+
+    value1 = float(input("input value of the harmonic selected  >>> "))
+    freqassignfunc(numb1,value1)
+    print("do you want to input another harmonic value?")
+    print("type 'yes' if yes else press enter")
+    w = input(">>> ")
+
+    print(sldr_list[0:18])
 
 
 if 0 <= H2 <= 1 and 0 <= H3 <= 1 and 0 <= H4 <= 1 and 0 <= H5 <= 1 and 0 <= H6 <= 1 and 0 <= H7 <= 1 and 0 <= H8 <= 1 and 0 <= H9 <= 1 and 0 <= H10 <= 1 :
@@ -159,48 +184,52 @@ if 0 <= H2 <= 1 and 0 <= H3 <= 1 and 0 <= H4 <= 1 and 0 <= H5 <= 1 and 0 <= H6 <
     # Note_4 = N14 + (H2 * N24) + (H3 * N34) + (H4 * N44) + (H5 * N54) + (H6 * N64) + (H7 * N74) + (H8 * N84) + ( H9 * N94) + (H10 * N104) + (H11 * N114) + (H12 * N124) + (H13 * N134) + (H14 * N144) + (H15 * N154) + ( H16 * N164) + (H17 * N174) + (H18 * N184) + (H19 * N194) + (H20 * N204)
     # Note_5 = N15 + (H2 * N25) + (H3 * N35) + (H4 * N45) + (H5 * N55) + (H6 * N65) + (H7 * N75) + (H8 * N85) + ( H9 * N95) + (H10 * N105) + (H11 * N115) + (H12 * N125) + (H13 * N135) + (H14 * N145) + (H15 * N155) + ( H16 * N165) + (H17 * N175) + (H18 * N185) + (H19 * N195) + (H20 * N205)
 
+
+# playing the frequency
     Cpro = np.hstack((Note_1))#, Note_2, Note_3, Note_4, Note_5))
     Cpro *= 32767 / np.max(np.abs(Cpro))
     Cpro = Cpro.astype(np.int16)
     play1 = sa.play_buffer(Cpro, 1, 2, sample_rate)
     play1.wait_done()
-
+else :
+    print("error")
 # region Easter Eggs
 # easter eggs from here on
-    if FUND == 69:
-        print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
-        q1 = ""
-        i=1
-        x = 69
-        while q1 != "asdfg":
-            print(i * str(x))
-            i += 1
-    elif FUND == 420:
-        print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
-        q2 = ""
-        j=1
-        x2 = 420
-        while q2 != "asdfg":
-            print(j * str(x2))
-            j += 1
-    elif 2000 < FUND < 14500:
-        print("I hope you didn't summon all the bats")
-    elif FUND > 14500:
-        print("it ain't worth trying higher, i guess you get the point")
-else:
-    print("pls read rules once more")
+    #if FUND == 69:
+        #print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
+        #q1 = ""
+        #i=1
+        #x = 69
+        #while q1 != "asdfg":
+            #print(i * str(x))
+            #i += 1
+    #elif FUND == 420:
+        #print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
+        #q2 = ""
+        #j=1
+        #x2 = 420
+        #while q2 != "asdfg":
+            #print(j * str(x2))
+            #j += 1
+    #elif 2000 < FUND < 14500:
+        #print("I hope you didn't summon all the bats")
+    #elif FUND > 14500:
+        #print("it ain't worth trying higher, i guess you get the point")
+#else:
+    #print("pls read rules once more")
 
 
-if H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20:
-    print("all same, lame choice")
-    print(f"only {H2}'s...")
-elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.69:
-    print("......")
-    print(".......")
-    print("omg!! he only typed the sex number")
-    print("typing 0.420 won yield anything new, don't worry")
-elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.42:
-    print("I told you")
+#if H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20:
+    #print("all same, lame choice")
+    #print(f"only {H2}'s...")
+#elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.69:
+    #print("......")
+    #print(".......")
+    #print("omg!! he only typed the sex number")
+    #print("typing 0.420 won yield anything new, don't worry")
+#elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.42:
+    #print("I told you")
 
 # endregion
+
 
