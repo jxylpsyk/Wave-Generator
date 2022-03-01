@@ -13,27 +13,8 @@ print("type in a value between 0 <= x <= 1")
 
 # collecting slider values
 
-H2 = 0  # (input("level of H2 >>"))
-H3 = 0  # float(input("level of H3 >>"))
-H4 = 0  # float(input("level of H4 >>"))
-H5 = 0  # float(input("level of H5 >>"))
-H6 = 0  # float(input("level of H6 >>"))
-H7 = 0  # float(input("level of H7 >>"))
-H8 = 0  # float(input("level of H8 >>"))
-H9 = 0  # float(input("level of H9 >>"))
-H10 = 0  # float(input("level of H10 >>"))
-H11 = 0  # float(input("level of H11 >>"))
-H12 = 0  # float(input("level of H12 >>"))
-H13 = 0  # float(input("level of H13 >>"))
-H14 = 0  # float(input("level of H14 >>"))
-H15 = 0  # float(input("level of H15 >>"))
-H16 = 0  # float(input("level of H16 >>"))
-H17 = 0  #  float(input("level of H17 >>"))
-H18 = 0 #  float(input("level of H18 >>"))
-H19 = 0  # float(input("level of H19 >>"))
-H20 = 0  # float(input("level of H20 >>"))
 
-sldr_list = [ H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20]
+sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 def freqassignfunc(numb,value):
@@ -45,16 +26,35 @@ print("type the number 'n' to select the n'th harmonic")
 print("then type the required value of the harmonic")
 w = "yes"
 while w.lower() == "yes" or w.lower() == "y":
-    numb1 = int(input("input the harmonic number(between 2 and 20)  >>> "))
-
-    value1 = float(input("input value of the harmonic selected  >>> "))
-    freqassignfunc(numb1,value1)
-    print("do you want to input another harmonic value?")
+    print("do you want to change a harmonic value?")
     print("type 'yes' if yes else press enter")
     w = input(">>> ")
+    if w.lower() == "yes" or w == "y":
+        numb1 = int(input("input the harmonic number(between 2 and 20)  >>> "))
+        value1 = float(input("input value of the harmonic selected  >>> "))
+        freqassignfunc(numb1,value1)
+    else:
+        break
 
-    print(sldr_list[0:18])
-
+H2 = sldr_list[0]  # (input("level of H2 >>"))
+H3 = sldr_list[1]  # float(input("level of H3 >>"))
+H4 = sldr_list[2]  # float(input("level of H4 >>"))
+H5 = sldr_list[3]  # float(input("level of H5 >>"))
+H6 = sldr_list[4]  # float(input("level of H6 >>"))
+H7 = sldr_list[5]  # float(input("level of H7 >>"))
+H8 = sldr_list[6]  # float(input("level of H8 >>"))
+H9 = sldr_list[7]  # float(input("level of H9 >>"))
+H10 = sldr_list[8]  # float(input("level of H10 >>"))
+H11 = sldr_list[9]  # float(input("level of H11 >>"))
+H12 = sldr_list[10]  # float(input("level of H12 >>"))
+H13 = sldr_list[11]  # float(input("level of H13 >>"))
+H14 = sldr_list[12]  # float(input("level of H14 >>"))
+H15 = sldr_list[13]  # float(input("level of H15 >>"))
+H16 = sldr_list[14]  # float(input("level of H16 >>"))
+H17 = sldr_list[15]  # float(input("level of H17 >>"))
+H18 = sldr_list[16]  # float(input("level of H18 >>"))
+H19 = sldr_list[17]  # float(input("level of H19 >>"))
+H20 = sldr_list[18]  # float(input("level of H20 >>"))
 
 if 0 <= H2 <= 1 and 0 <= H3 <= 1 and 0 <= H4 <= 1 and 0 <= H5 <= 1 and 0 <= H6 <= 1 and 0 <= H7 <= 1 and 0 <= H8 <= 1 and 0 <= H9 <= 1 and 0 <= H10 <= 1 :
 
@@ -178,7 +178,7 @@ if 0 <= H2 <= 1 and 0 <= H3 <= 1 and 0 <= H4 <= 1 and 0 <= H5 <= 1 and 0 <= H6 <
     # N204 = np.sin(20 * FUND * (2 ** (5 / 12)) * t * 2 * np.pi)
     # N205 = np.sin(20 * FUND * (2 ** (7 / 12)) * t * 2 * np.pi)
 
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + ( H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + ( H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
+    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5* N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
     # Note_2 = N12 + (H2 * N22) + (H3 * N32) + (H4 * N42) + (H5 * N52) + (H6 * N62) + (H7 * N72) + (H8 * N82) + ( H9 * N92) + (H10 * N102) + (H11 * N112) + (H12 * N122) + (H13 * N132) + (H14 * N142) + (H15 * N152) + ( H16 * N162) + (H17 * N172) + (H18 * N182) + (H19 * N192) + (H20 * N202)
     # Note_3 = N13 + (H2 * N23) + (H3 * N33) + (H4 * N43) + (H5 * N53) + (H6 * N63) + (H7 * N73) + (H8 * N83) + ( H9 * N93) + (H10 * N103) + (H11 * N113) + (H12 * N123) + (H13 * N133) + (H14 * N143) + (H15 * N153) + ( H16 * N163) + (H17 * N173) + (H18 * N183) + (H19 * N193) + (H20 * N203)
     # Note_4 = N14 + (H2 * N24) + (H3 * N34) + (H4 * N44) + (H5 * N54) + (H6 * N64) + (H7 * N74) + (H8 * N84) + ( H9 * N94) + (H10 * N104) + (H11 * N114) + (H12 * N124) + (H13 * N134) + (H14 * N144) + (H15 * N154) + ( H16 * N164) + (H17 * N174) + (H18 * N184) + (H19 * N194) + (H20 * N204)
