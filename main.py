@@ -160,6 +160,15 @@ class Vertical_Slider:
 
         self.Slide.place(x=self.pos_x, y=self.pos_y)
 
+class Horizontal_Slider:
+    def __init__(self, pos_x, pos_y):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.Slide = tk.Scale(root, from_=100, to=0, length = 220,orient = 'Horizontal')
+
+        self.Slide.place(x=self.pos_x, y=self.pos_y)
+
+
 class HarmonicsLabel:
     def __init__(self, num, pos_x, pos_y):
         self.pos_x = pos_x
@@ -292,14 +301,6 @@ if SYSTEM_OS == "Darwin":
 
 
     render_sliders()
-
-
-
-
-
-
-
-
 
 
 
