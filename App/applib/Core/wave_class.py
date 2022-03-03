@@ -8,12 +8,16 @@ from ..utils import messenger as mss
 class Wave:
 
     # constructor
-    def __init__(self, audio_arr=[]):
+    def __init__(self, audio_arr=[], fund_freq = 440):
         self.audio_arr = audio_arr
+        self.freq = fund_freq
 
     # Call this to set a pre-defined audio array to the Wave object instead of creating one
     def set_audio(self, audio_arr):
         self.audio_arr = audio_arr
+
+    def set_freq(self, freq):
+        self.freq = freq
 
     # Call this to save the current wave
     def save_audio(self, wave_name) -> None:

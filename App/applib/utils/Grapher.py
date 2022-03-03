@@ -15,9 +15,11 @@ from .analyser import AudioDetector
 # this should be changed to selected wave array
 
 
-def create_graph_image(user_arr) -> None:
+def create_graph_image(user_wave) -> None:
     # freq = AudioDetector().find_highest_probable_frequency(user_arr)
-    freq = 440
+    freq = user_wave.freq
+
+    user_arr = user_wave.audio_arr
 
     single_osc = constants.SAMPLE_RATE / freq
 
