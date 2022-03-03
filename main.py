@@ -155,6 +155,15 @@ class Vertical_Slider:
 
         self.Slide.place(x=self.pos_x, y=self.pos_y)
 
+class Horizontal_Slider:
+    def __init__(self, pos_x, pos_y):
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.Slide = tk.Scale(root, from_=100, to=0, length = 220,orient = 'Horizontal')
+
+        self.Slide.place(x=self.pos_x, y=self.pos_y)
+
+
 class HarmonicsLabel:
     def __init__(self, num, pos_x, pos_y):
         self.pos_x = pos_x
@@ -276,14 +285,6 @@ if SYSTEM_OS == "Darwin":
     FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 
-
-
-
-
-
-
-
-
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
@@ -307,6 +308,8 @@ elif SYSTEM_OS == "Linux":
     dd = DropDown(200, 200)
 
     render_sliders()
+
+    He = Horizontal_Slider(1,1)
     
     FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
