@@ -18,6 +18,8 @@ CHANNELS = 1
 # Music dependencies
 # =====================
 
+DEFAULT_FREQ = 440
+
 OCTAVE_5_NOTES = {
     'C': 440 * 2**(3 / 12),
     'Csh': 440 * 2**(4 / 12),

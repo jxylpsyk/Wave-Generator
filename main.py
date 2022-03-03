@@ -7,6 +7,7 @@ from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
 from App.applib.Core.default_waves import make_default_wave
 from App.applib.Core.audio import play_audio
+import App.applib.Core.harmonictest as ht
 
 from App.applib.utils import Grapher, messenger, wav_saver, luminosity
 
@@ -17,10 +18,9 @@ from App.applib.utils import Grapher, messenger, wav_saver, luminosity
 
 # Make the button color user editable, after the move to GUI folder, import luminosity
 
-user_wave1 = Wave(make_default_wave('sin', 440, 1))
-user_wave2 = Wave(make_default_wave('sin', 440, 1))
+focus_wave = Wave(make_default_wave('sin', 440, 1))
 
-focus_wave = user_wave1
+FREQ = 440 # default
 
 #GUI
 root = tk.Tk()
@@ -33,9 +33,13 @@ canvas = tk.Canvas(
 
 canvas.place(x=-5, y=-5)
 
+# converts plt.Figure to a tk.Canvas
+main_graph = FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget()
+main_graph.place(x=0, y=0)
 
 # region Classes
 '''
+
 class image:
     def __init__(self,relPth, x_codds, y_codds):
         self.x_codds = x_codds
@@ -53,9 +57,10 @@ class image:
         graph_label = tk.label(image=graph)
         graph_label.image = graph
         graph_label.grid(column=x_codds, row=y_codds)
+
     '''
 
-class DropDown():
+class DropDown:
     def __init__(self, pos_x, pos_y) -> None:
         self.drop_state = False
         self.user_wave_names = messenger.get_user_waves()
@@ -127,19 +132,19 @@ class DropDown():
                 tk.Button(self.list_frame, width=19, text=wave, compound='top', borderwidth=0, command = lambda w_name=wave : __change_label(w_name)).pack()
 
             self.list_frame.place(x=unindent_x, y=unindent_y)
-    
-class textBox:
-    def __init__(self, pos_x, pos_y, wdth):
-        # karma
+
+# TODO: Add a frequency text box
+class TextBox:
+    def __init__(self, pos_x, pos_y, wdth, height):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.clspn = wdth
         self.textbox = tk.Text(
             root,
             width=wdth,
-            height=2,
-            background='#000000',
-            foreground='#FFFFFF',
+            height=height,
+            background=FG_COLOR,
+            foreground=LINE_COLOR,
         )
 
         self.textbox.place(x=self.pos_x, y=self.pos_y)
@@ -204,6 +209,7 @@ class UIButton:
 
         self.button.place(x=self.position_x, y=self.position_y)
 
+# ! Not used
 class FreqDetectButtons:
     def __init__(self, name, pos_x, pos_y, lambda_func):
         self.pos_y = pos_y
@@ -219,6 +225,13 @@ class FreqDetectButtons:
                                 command=lambda_func)
         self.button.place(x=self.pos_x, y=self.pos_y)
 
+def update_graph(user_arr):
+    temp = FigureCanvasTkAgg(Grapher.create_graph_image(user_arr), root).get_tk_widget()
+    main_graph.destroy()
+    # main_graph = temp
+    # temp.destroy()
+    temp.place(x=0, y=0)
+
 def HoverBind(widget, slider_no):
 
     labeleyo = tk.Label(root, text='hahahano')
@@ -227,14 +240,20 @@ def HoverBind(widget, slider_no):
         labeleyo['text'] = slider_no
         labeleyo.place(x=100, y=100)
         # print(widget.get())
-        widget.get()
+        # TODO: call function to update harmonics, pass in widget.get()
+        # widget.get()
+        ht.freqassignfunc(slider_no, widget.get())
         
     def leave(event):
         labeleyo.place(x=200, y=50)
         labeleyo.place_forget()
+        # print('hello')
+        # TODO: call function to update graph shape
+        focus_wave.audio_arr = ht.make_arr()
+        update_graph(focus_wave.audio_arr)
 
     widget.bind('<B1-Motion>', enter)
-    widget.bind('<Leave>', leave)
+    widget.bind('<ButtonRelease-1>', leave)
 
 def render_sliders():
 
@@ -242,15 +261,17 @@ def render_sliders():
 
     for i in range(19, -1, -1):
         Slider_List.append(Vertical_Slider(WINDOW_WIDTH -118- (MyNewCuteConstant*i)  , WINDOW_HEIGHT - 270))
-        HarmonicsLabel( 20-i, WINDOW_WIDTH - 120 - (MyNewCuteConstant*i) , WINDOW_HEIGHT - 300)
+        HarmonicsLabel( 21-i, WINDOW_WIDTH - 120 - (MyNewCuteConstant*i) , WINDOW_HEIGHT - 300)
 
-        HoverBind (Slider_List[19-i].Slide, 20-i)
-
+        HoverBind (Slider_List[19-i].Slide, 21-i)
 
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54)
+    txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
+
+    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
+    # freq_set_btn = UIButton('Set', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, lambda: FREQ = int(freq_box.return_text()))
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -272,8 +293,8 @@ if SYSTEM_OS == "Darwin":
 
     render_sliders()
 
-    # converts plt.Figure to a tk.Canvas
-    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
+
+
 
 
 
@@ -287,7 +308,7 @@ if SYSTEM_OS == "Darwin":
 elif SYSTEM_OS == "Linux":
     '''!!!LINUX!!!'''
 
-    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54)
+    txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -307,11 +328,9 @@ elif SYSTEM_OS == "Linux":
     dd = DropDown(200, 200)
 
     render_sliders()
-    
-    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 elif SYSTEM_OS == "Windows":
-    txtinp = textBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50)
+    txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50, 2)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -331,8 +350,6 @@ elif SYSTEM_OS == "Windows":
     dd = DropDown(200, 200)
 
     render_sliders()
-
-    FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget().place(x=0, y=0)
 
 else:
     print('Please use a valid Opperating system [Windows ,MacOS, Linux]')
