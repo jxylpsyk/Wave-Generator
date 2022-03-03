@@ -18,9 +18,7 @@ from App.applib.utils import Grapher, messenger, wav_saver, luminosity
 
 # Make the button color user editable, after the move to GUI folder, import luminosity
 
-focus_wave = Wave(make_default_wave('sin', 440, 1))
-
-FREQ = 440 # default
+focus_wave = Wave(make_default_wave('sin', DEFAULT_FREQ, 1), fund_freq=DEFAULT_FREQ)
 
 #GUI
 root = tk.Tk()
@@ -34,7 +32,7 @@ canvas = tk.Canvas(
 canvas.place(x=-5, y=-5)
 
 # converts plt.Figure to a tk.Canvas
-main_graph = FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave.audio_arr), root).get_tk_widget()
+main_graph = FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave), root).get_tk_widget()
 main_graph.place(x=0, y=0)
 
 # region Classes
@@ -234,8 +232,8 @@ class FreqDetectButtons:
                                 command=lambda_func)
         self.button.place(x=self.pos_x, y=self.pos_y)
 
-def update_graph(user_arr):
-    temp = FigureCanvasTkAgg(Grapher.create_graph_image(user_arr), root).get_tk_widget()
+def update_graph(user_wave):
+    temp = FigureCanvasTkAgg(Grapher.create_graph_image(user_wave), root).get_tk_widget()
     main_graph.destroy()
     # main_graph = temp
     # temp.destroy()
@@ -259,7 +257,7 @@ def HoverBind(widget, slider_no):
         # print('hello')
         # TODO: call function to update graph shape
         focus_wave.audio_arr = ht.make_arr()
-        update_graph(focus_wave.audio_arr)
+        update_graph(focus_wave)
 
     widget.bind('<B1-Motion>', enter)
     widget.bind('<ButtonRelease-1>', leave)
@@ -274,13 +272,21 @@ def render_sliders():
 
         HoverBind (Slider_List[19-i].Slide, 21-i)
 
+def set_freq():
+    if freq_box.return_text().strip() != '':
+        freq = int(freq_box.return_text())
+        focus_wave = Wave(make_default_wave('sin', freq, 1), fund_freq= freq)
+
+        update_graph(focus_wave)
+
+
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
 
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
 
     freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
-    # freq_set_btn = UIButton('Set', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, lambda: FREQ = int(freq_box.return_text()))
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -311,6 +317,9 @@ elif SYSTEM_OS == "Linux":
 
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
 
+    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
+
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
                             if txtinp.return_text() != '' else 0)
@@ -332,6 +341,9 @@ elif SYSTEM_OS == "Linux":
 
 elif SYSTEM_OS == "Windows":
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50, 2)
+
+    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
