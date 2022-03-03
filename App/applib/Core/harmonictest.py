@@ -7,8 +7,8 @@ print("integral frequencies work best")
 FUND = float(input("input fundamental frequency >>"))
 sample_rate = 44100
 T = 2
-print(" rules for typing loudness of harmonics")
-print("type in a value between 0 <= x <= 1")
+#print(" rules for typing loudness of harmonics")
+#print("type in a value between 0 <= x <= 1")
 t = np.linspace(0, 2, int(2 * SAMPLE_RATE), False)
 
 sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -296,6 +296,7 @@ if w.lower() != "yes" or w.lower() != "y":
 #    N181 = np.sin(18 * FUND * t * 2 * np.pi)
 #    N191 = np.sin(19 * FUND * t * 2 * np.pi)
 #    N201 = np.sin(20 * FUND * t * 2 * np.pi)
+
 """
 
 # END OF INTERFACE CODE
