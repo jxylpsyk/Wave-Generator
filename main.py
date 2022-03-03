@@ -31,9 +31,7 @@ canvas = tk.Canvas(
 
 canvas.place(x=-5, y=-5)
 
-# converts plt.Figure to a tk.Canvas
-main_graph = FigureCanvasTkAgg(Grapher.create_graph_image(focus_wave), root).get_tk_widget()
-main_graph.place(x=0, y=0)
+grapher = Grapher.Grapher()
 
 # region Classes
 '''
@@ -158,14 +156,8 @@ class Vertical_Slider:
 
         self.Slide.place(x=self.pos_x, y=self.pos_y)
 
-class Horizontal_Slider:
-    def __init__(self, pos_x, pos_y):
-        self.pos_x = pos_x
-        self.pos_y = pos_y
-        self.Slide = tk.Scale(root, from_=100, to=0, length = 220,orient = 'Horizontal')
-
-        self.Slide.place(x=self.pos_x, y=self.pos_y)
-
+    def set_val(self, value):
+        self.Slide.set(value)
 
 class HarmonicsLabel:
     def __init__(self, num, pos_x, pos_y):
@@ -233,11 +225,10 @@ class FreqDetectButtons:
         self.button.place(x=self.pos_x, y=self.pos_y)
 
 def update_graph(user_wave):
-    temp = FigureCanvasTkAgg(Grapher.create_graph_image(user_wave), root).get_tk_widget()
-    main_graph.destroy()
+    main_graph = FigureCanvasTkAgg(grapher.create_graph_image(user_wave), root).get_tk_widget()
     # main_graph = temp
     # temp.destroy()
-    temp.place(x=0, y=0)
+    main_graph.place(x=0, y=0)
 
 def HoverBind(widget, slider_no):
 
@@ -246,17 +237,12 @@ def HoverBind(widget, slider_no):
     def enter(event):
         labeleyo['text'] = slider_no
         labeleyo.place(x=100, y=100)
-        # print(widget.get())
-        # TODO: call function to update harmonics, pass in widget.get()
-        # widget.get()
         ht.freqassignfunc(slider_no, widget.get())
         
     def leave(event):
         labeleyo.place(x=200, y=50)
         labeleyo.place_forget()
-        # print('hello')
-        # TODO: call function to update graph shape
-        focus_wave.audio_arr = ht.make_arr()
+        focus_wave.audio_arr = ht.variabledef(focus_wave.freq)
         update_graph(focus_wave)
 
     widget.bind('<B1-Motion>', enter)
@@ -275,7 +261,8 @@ def render_sliders():
 def set_freq():
     if freq_box.return_text().strip() != '':
         freq = int(freq_box.return_text())
-        focus_wave = Wave(make_default_wave('sin', freq, 1), fund_freq= freq)
+        focus_wave.freq = freq
+        focus_wave.audio_arr = ht.variabledef(focus_wave.freq)
 
         update_graph(focus_wave)
 
@@ -287,6 +274,8 @@ if SYSTEM_OS == "Darwin":
 
     freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
     freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
+
+    load_btn = UIButton('Load', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 700)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -307,6 +296,8 @@ if SYSTEM_OS == "Darwin":
 
 
     render_sliders()
+
+    update_graph(focus_wave)
 
 
 
@@ -339,6 +330,9 @@ elif SYSTEM_OS == "Linux":
 
     render_sliders()
 
+    update_graph(focus_wave)
+
+
 elif SYSTEM_OS == "Windows":
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50, 2)
 
@@ -363,6 +357,9 @@ elif SYSTEM_OS == "Windows":
     dd = DropDown(200, 200)
 
     render_sliders()
+
+    update_graph(focus_wave)
+
 
 else:
     print('Please use a valid Opperating system [Windows ,MacOS, Linux]')

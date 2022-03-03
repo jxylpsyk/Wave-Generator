@@ -14,35 +14,44 @@ from .analyser import AudioDetector
 
 # this should be changed to selected wave array
 
+class Grapher:
 
-def create_graph_image(user_wave) -> None:
-    # freq = AudioDetector().find_highest_probable_frequency(user_arr)
-    freq = user_wave.freq
+    def __init__(self) -> None:
+        self.fig = plt.figure(facecolor=constants.BG_COLOR)
+        self.plot1 = self.fig.add_subplot(111)
 
-    user_arr = user_wave.audio_arr
+        ax = self.fig.axes[0]
+        ax.set_facecolor(constants.FG_COLOR)
 
-    single_osc = constants.SAMPLE_RATE / freq
+        plt.tight_layout()
 
-    # converts a float value to the integer above it
-    if not single_osc.is_integer():
-        single_osc = round(single_osc + 0.5)
+    def create_graph_image(self, user_wave) -> None:
+        # freq = AudioDetector().find_highest_probable_frequency(user_arr)
+        freq = user_wave.freq
 
-    cut_arr = user_arr[:int(single_osc)]
-    
-    fig = plt.figure(facecolor=constants.BG_COLOR)
+        user_arr = user_wave.audio_arr
 
-    plot1 = fig.add_subplot(111)
-    plot1.plot(cut_arr, color= constants.LINE_COLOR)
+        single_osc = constants.SAMPLE_RATE / freq
 
-    ax = fig.axes[0]
-    ax.set_facecolor(constants.FG_COLOR)
+        # converts a float value to the integer above it
+        if not single_osc.is_integer():
+            single_osc = round(single_osc + 0.5)
 
-    [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.xaxis.get_ticklabels()]
-    [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.yaxis.get_ticklabels()]
+        cut_arr = user_arr[:int(single_osc)]
+        plt.cla()
 
-    plt.tight_layout()
+        ax = self.fig.axes[0]
+
+        [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.xaxis.get_ticklabels()]
+        [t.set_color(black_or_white(constants.BG_COLOR)) for t in ax.yaxis.get_ticklabels()]
+
+        self.plot1.plot(cut_arr, color= constants.LINE_COLOR)
+
+        return self.fig
+
+   
 
     # plt.savefig('Images/graph_img.jpg', bbox_inches='tight')
     # plt.close()
 
-    return fig
+    

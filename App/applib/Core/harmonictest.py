@@ -4,7 +4,7 @@ import simpleaudio as sa
 from .constants import SAMPLE_RATE
 
 print("integral frequencies work best")
-FUND = float(input("input fundamental frequency >>"))
+# FUND = float(input("input fundamental frequency >>"))
 sample_rate = 44100
 T = 2
 print(" rules for typing loudness of harmonics")
@@ -13,30 +13,9 @@ t = np.linspace(0, 2, int(2 * SAMPLE_RATE), False)
 
 sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-N11 = np.sin(FUND * t * 2 * np.pi)
-N21 = np.sin(2 * FUND * t * 2 * np.pi)
-N31 = np.sin(3 * FUND * t * 2 * np.pi)
-N41 = np.sin(4 * FUND * t * 2 * np.pi)
-N51 = np.sin(5 * FUND * t * 2 * np.pi)
-N61 = np.sin(6 * FUND * t * 2 * np.pi)
-N71 = np.sin(7 * FUND * t * 2 * np.pi)
-N81 = np.sin(8 * FUND * t * 2 * np.pi)
-N91 = np.sin(9 * FUND * t * 2 * np.pi)
-N101 = np.sin(10 * FUND * t * 2 * np.pi)
-N111 = np.sin(11 * FUND * t * 2 * np.pi)
-N121 = np.sin(12 * FUND * t * 2 * np.pi)
-N131 = np.sin(13 * FUND * t * 2 * np.pi)
-N141 = np.sin(14 * FUND * t * 2 * np.pi)
-N151 = np.sin(15 * FUND * t * 2 * np.pi)
-N161 = np.sin(16 * FUND * t * 2 * np.pi)
-N171 = np.sin(17 * FUND * t * 2 * np.pi)
-N181 = np.sin(18 * FUND * t * 2 * np.pi)
-N191 = np.sin(19 * FUND * t * 2 * np.pi)
-N201 = np.sin(20 * FUND * t * 2 * np.pi)
-N211 = np.sin(21 * FUND * t * 2 * np.pi)
 
 
-def variabledef():
+def variabledef(fund_freq):
     H2 = sldr_list[0]
     H3 = sldr_list[1]
     H4 = sldr_list[2]
@@ -58,10 +37,53 @@ def variabledef():
     H20 = sldr_list[18]
     H21 = sldr_list[19]
 
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201) + (H21 * N211)
-    return Note_1
+    N11 = np.sin(fund_freq * t * 2 * np.pi)
+    N21 = np.sin(2 * fund_freq * t * 2 * np.pi)
+    N31 = np.sin(3 * fund_freq * t * 2 * np.pi)
+    N41 = np.sin(4 * fund_freq * t * 2 * np.pi)
+    N51 = np.sin(5 * fund_freq * t * 2 * np.pi)
+    N61 = np.sin(6 * fund_freq * t * 2 * np.pi)
+    N71 = np.sin(7 * fund_freq * t * 2 * np.pi)
+    N81 = np.sin(8 * fund_freq * t * 2 * np.pi)
+    N91 = np.sin(9 * fund_freq * t * 2 * np.pi)
+    N101 = np.sin(10 * fund_freq * t * 2 * np.pi)
+    N111 = np.sin(11 * fund_freq * t * 2 * np.pi)
+    N121 = np.sin(12 * fund_freq * t * 2 * np.pi)
+    N131 = np.sin(13 * fund_freq * t * 2 * np.pi)
+    N141 = np.sin(14 * fund_freq * t * 2 * np.pi)
+    N151 = np.sin(15 * fund_freq * t * 2 * np.pi)
+    N161 = np.sin(16 * fund_freq * t * 2 * np.pi)
+    N171 = np.sin(17 * fund_freq * t * 2 * np.pi)
+    N181 = np.sin(18 * fund_freq * t * 2 * np.pi)
+    N191 = np.sin(19 * fund_freq * t * 2 * np.pi)
+    N201 = np.sin(20 * fund_freq * t * 2 * np.pi)
+    N211 = np.sin(21 * fund_freq * t * 2 * np.pi)
+
+    # N11, N21, N31, N41, N51, N61, N71, N81, N91, N101, N111, N121, N131, N141, N151, N161, N171, N181, N191, N201, N211  = N_list
+
+    return (
+        N11
+        + (H2 * N21)
+        + (H3 * N31)
+        + (H4 * N41)
+        + (H5 * N51)
+        + (H6 * N61)
+        + (H7 * N71)
+        + (H8 * N81)
+        + (H9 * N91)
+        + (H10 * N101)
+        + (H11 * N111)
+        + (H12 * N121)
+        + (H13 * N131)
+        + (H14 * N141)
+        + (H15 * N151)
+        + (H16 * N161)
+        + (H17 * N171)
+        + (H18 * N181)
+        + (H19 * N191)
+        + (H20 * N201)
+        + (H21 * N211)
+    )
 
 
 def sineval():
@@ -191,7 +213,6 @@ def impulseval():
 
 def freqassignfunc(numb, value):
     sldr_list[(int(numb) - 2)] = float(value)
-    variabledef()
 
 # INTERFACE CODE FOR TESTING
 

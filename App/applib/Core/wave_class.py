@@ -8,7 +8,9 @@ from ..utils import messenger as mss
 class Wave:
 
     # constructor
-    def __init__(self, audio_arr=[], fund_freq = 440):
+    def __init__(self, audio_arr = None, fund_freq = 440):
+        if audio_arr is None:
+            audio_arr = []
         self.audio_arr = audio_arr
         self.freq = fund_freq
 
