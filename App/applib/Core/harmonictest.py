@@ -3,15 +3,15 @@ import simpleaudio as sa
 
 from .constants import SAMPLE_RATE
 
-# print("integral frequencies work best")
+print("integral frequencies work best")
 FUND = float(input("input fundamental frequency >>"))
-# sample_rate = 44100
-# T = 2
-# print(" rules for typing loudness of harmonics")
-# print("type in a value between 0 <= x <= 1")
+sample_rate = 44100
+T = 2
+print(" rules for typing loudness of harmonics")
+print("type in a value between 0 <= x <= 1")
 t = np.linspace(0, 2, int(2 * SAMPLE_RATE), False)
 
-sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 N11 = np.sin(FUND * t * 2 * np.pi)
 N21 = np.sin(2 * FUND * t * 2 * np.pi)
@@ -33,6 +33,36 @@ N171 = np.sin(17 * FUND * t * 2 * np.pi)
 N181 = np.sin(18 * FUND * t * 2 * np.pi)
 N191 = np.sin(19 * FUND * t * 2 * np.pi)
 N201 = np.sin(20 * FUND * t * 2 * np.pi)
+N211 = np.sin(21 * FUND * t * 2 * np.pi)
+
+
+def variabledef():
+    H2 = sldr_list[0]
+    H3 = sldr_list[1]
+    H4 = sldr_list[2]
+    H5 = sldr_list[3]
+    H6 = sldr_list[4]
+    H7 = sldr_list[5]
+    H8 = sldr_list[6]
+    H9 = sldr_list[7]
+    H10 = sldr_list[8]
+    H11 = sldr_list[9]
+    H12 = sldr_list[10]
+    H13 = sldr_list[11]
+    H14 = sldr_list[12]
+    H15 = sldr_list[13]
+    H16 = sldr_list[14]
+    H17 = sldr_list[15]
+    H18 = sldr_list[16]
+    H19 = sldr_list[17]
+    H20 = sldr_list[18]
+    H21 = sldr_list[19]
+
+    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
+            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
+                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201) + (H21 * N211)
+    return Note_1
+
 
 def sineval():
     sldr_list[0] = 0
@@ -54,32 +84,9 @@ def sineval():
     sldr_list[16] = 0
     sldr_list[17] = 0
     sldr_list[18] = 0
+    sldr_list[19] = 0
 
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
-
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-    
-    return Note_1
+    variabledef()
 
 
 def squareval():
@@ -102,32 +109,9 @@ def squareval():
     sldr_list[16] = 0
     sldr_list[17] = 0.0526315789474
     sldr_list[18] = 0
+    sldr_list[19] = 0.047619047619
 
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
-
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-
-    return Note_1
+    variabledef()
 
 
 def triangleval():
@@ -150,32 +134,9 @@ def triangleval():
     sldr_list[16] = 0
     sldr_list[17] = 0.00277008310249
     sldr_list[18] = 0
+    sldr_list[19] = -0.00226757369615
 
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
-
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-    
-    return Note_1
+    variabledef()
 
 
 def sawtoothval():
@@ -198,114 +159,44 @@ def sawtoothval():
     sldr_list[16] = 0.055555555555555
     sldr_list[17] = 0.0526315789474
     sldr_list[18] = 0.05
+    sldr_list[19] = 0.047619047619
 
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
-
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-    
-
-    return Note_1
+    variabledef()
 
 
 def impulseval():
-    sldr_list[0] = -0.9
-    sldr_list[1] = -0.85
-    sldr_list[2] = 0.8
-    sldr_list[3] = 0.75
-    sldr_list[4] = -0.7
-    sldr_list[5] = -0.65
-    sldr_list[6] = 0.6
-    sldr_list[7] = 0.55
-    sldr_list[8] = -0.5
-    sldr_list[9] = -0.45
-    sldr_list[10] = 0.4
-    sldr_list[11] = 0.35
-    sldr_list[12] = -0.3
-    sldr_list[13] = -0.25
-    sldr_list[14] = 0.2
-    sldr_list[15] = 0.15
-    sldr_list[16] = -0.1
-    sldr_list[17] = -0.05
-    sldr_list[18] = 0
+    sldr_list[0] = -0.95
+    sldr_list[1] = -0.9
+    sldr_list[2] = 0.85
+    sldr_list[3] = 0.8
+    sldr_list[4] = -0.75
+    sldr_list[5] = -0.7
+    sldr_list[6] = 0.65
+    sldr_list[7] = 0.6
+    sldr_list[8] = -0.55
+    sldr_list[9] = -0.5
+    sldr_list[10] = 0.45
+    sldr_list[11] = 0.4
+    sldr_list[12] = -0.35
+    sldr_list[13] = -0.3
+    sldr_list[14] = 0.25
+    sldr_list[15] = 0.2
+    sldr_list[16] = -0.15
+    sldr_list[17] = -0.1
+    sldr_list[18] = 0.05
+    sldr_list[19] = 0
 
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
+    variabledef()
 
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-
-    return Note_1
 
 def freqassignfunc(numb, value):
     sldr_list[(int(numb) - 2)] = float(value)
+    variabledef()
 
-def make_arr():
-    H2 = sldr_list[0]
-    H3 = sldr_list[1]
-    H4 = sldr_list[2]
-    H5 = sldr_list[3]
-    H6 = sldr_list[4]
-    H7 = sldr_list[5]
-    H8 = sldr_list[6]
-    H9 = sldr_list[7]
-    H10 = sldr_list[8]
-    H11 = sldr_list[9]
-    H12 = sldr_list[10]
-    H13 = sldr_list[11]
-    H14 = sldr_list[12]
-    H15 = sldr_list[13]
-    H16 = sldr_list[14]
-    H17 = sldr_list[15]
-    H18 = sldr_list[16]
-    H19 = sldr_list[17]
-    H20 = sldr_list[18]
+# INTERFACE CODE FOR TESTING
 
-
-    Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
-            H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                     H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
-
-    return Note_1
-
-""" print("type 'yes' for yes or press enter for no")
+"""
+print("type 'yes' for yes or press enter for no")
 sineask = input("do you want a sine wave?  >>>")
 
 if sineask.lower() in ["yes", "y"]:
@@ -339,16 +230,16 @@ if w.lower() in ["yes", "y"]:
     print("then type the required value of the harmonic")
 
 while w.lower() in ["yes", "y"]:
-    numb1 = int(input("input the harmonic number(between 2 and 20)  >>> "))
+    numb1 = int(input("input the harmonic number(between 2 and 21)  >>> "))
     value1 = float(input("input value of the harmonic selected  >>> "))
     freqassignfunc(numb1, value1)
     print("do you want to make another change?")
     w = input(">>> ")
 print("harmonic values are as follows")
 for l in sldr_list:
-    print(l) """
+    print(l)
 
-"""if w.lower() != "yes" or  w.lower() != "y":
+if w.lower() != "yes" or w.lower() != "y":
     H2 = sldr_list[0]
     H3 = sldr_list[1]
     H4 = sldr_list[2]
@@ -368,38 +259,20 @@ for l in sldr_list:
     H18 = sldr_list[16]
     H19 = sldr_list[17]
     H20 = sldr_list[18]
+    H21 = sldr_list[19]
 
-    if -1 <= H2 <= 1 and -1 <= H3 <= 1 and -1 <= H4 <= 1 and -1 <= H5 <= 1 and -1 <= H6 <= 1 and -1 <= H7 <= 1 and -1 <= H8 <= 1 and -1 <= H9 <= 1 and -1 <= H10 <= 1 and -1 <= H11 <= 1 and -1 <= H12 <= 1 and -1 <= H13 <= 1 and -1 <= H14 <= 1 and -1 <= H15 <= 1 and -1 <= H16 <= 1 and -1 <= H17 <= 1 and -1 <= H18 <= 1 and -1 <= H19 <= 1 and -1 <= H20 <= 1:
-        N11 = np.sin(FUND * t * 2 * np.pi)
-        N21 = np.sin(2 * FUND * t * 2 * np.pi)
-        N31 = np.sin(3 * FUND * t * 2 * np.pi)
-        N41 = np.sin(4 * FUND * t * 2 * np.pi)
-        N51 = np.sin(5 * FUND * t * 2 * np.pi)
-        N61 = np.sin(6 * FUND * t * 2 * np.pi)
-        N71 = np.sin(7 * FUND * t * 2 * np.pi)
-        N81 = np.sin(8 * FUND * t * 2 * np.pi)
-        N91 = np.sin(9 * FUND * t * 2 * np.pi)
-        N101 = np.sin(10 * FUND * t * 2 * np.pi)
-        N111 = np.sin(11 * FUND * t * 2 * np.pi)
-        N121 = np.sin(12 * FUND * t * 2 * np.pi)
-        N131 = np.sin(13 * FUND * t * 2 * np.pi)
-        N141 = np.sin(14 * FUND * t * 2 * np.pi)
-        N151 = np.sin(15 * FUND * t * 2 * np.pi)
-        N161 = np.sin(16 * FUND * t * 2 * np.pi)
-        N171 = np.sin(17 * FUND * t * 2 * np.pi)
-        N181 = np.sin(18 * FUND * t * 2 * np.pi)
-        N191 = np.sin(19 * FUND * t * 2 * np.pi)
-        N201 = np.sin(20 * FUND * t * 2 * np.pi)
+    if -1 <= H2 <= 1 and -1 <= H3 <= 1 and -1 <= H4 <= 1 and -1 <= H5 <= 1 and -1 <= H6 <= 1 and -1 <= H7 <= 1 and -1 <= H8 <= 1 and -1 <= H9 <= 1 and -1 <= H10 <= 1 and -1 <= H11 <= 1 and -1 <= H12 <= 1 and -1 <= H13 <= 1 and -1 <= H14 <= 1 and -1 <= H15 <= 1 and -1 <= H16 <= 1 and -1 <= H17 <= 1 and -1 <= H18 <= 1 and -1 <= H19 <= 1 and -1 <= H20 <= 1 and -1 <= H21 <= 1:
+        variabledef()
 
         Note_1 = N11 + (H2 * N21) + (H3 * N31) + (H4 * N41) + (H5 * N51) + (H6 * N61) + (H7 * N71) + (H8 * N81) + (
                 H9 * N91) + (H10 * N101) + (H11 * N111) + (H12 * N121) + (H13 * N131) + (H14 * N141) + (H15 * N151) + (
-                         H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201)
+                         H16 * N161) + (H17 * N171) + (H18 * N181) + (H19 * N191) + (H20 * N201) + (H21 * N211)
 
         Cpro = np.hstack(Note_1)
         Cpro *= 32767 / np.max(np.abs(Cpro))
         Cpro = Cpro.astype(np.int16)
         play1 = sa.play_buffer(Cpro, 1, 2, sample_rate)
-        play1.wait_done() """
+        play1.wait_done()
 
 # if -1 <= H2 <= 1 and -1 <= H3 <= 1 and -1 <= H4 <= 1 and -1 <= H5 <= 1 and -1 <= H6 <= 1 and -1 <= H7 <= 1 and -1 <= H8 <= 1 and -1 <= H9 <= 1 and -1 <= H10 <= 1 and -1 <= H11 <= 1 and -1 <= H12 <= 1 and -1 <= H13 <= 1 and -1 <= H14 <= 1 and -1 <= H15 <= 1 and -1 <= H16 <= 1 and -1 <= H17 <= 1 and -1 <= H18 <= 1 and -1 <= H19 <= 1 and -1 <= H20 <= 1:
 
@@ -423,6 +296,13 @@ for l in sldr_list:
 #    N181 = np.sin(18 * FUND * t * 2 * np.pi)
 #    N191 = np.sin(19 * FUND * t * 2 * np.pi)
 #    N201 = np.sin(20 * FUND * t * 2 * np.pi)
+"""
+
+# END OF INTERFACE CODE
+
+
+
+# USEFULL REMINANTS OF PREVIOUSLY FUNCTIONAL CODE
 
 # N12 = np.sin(FUND*(2**(2/12)) * t * 2 * np.pi)
 # N13 = np.sin(FUND*(2**(4/12)) * t * 2 * np.pi)
@@ -549,42 +429,3 @@ for l in sldr_list:
 # Note_4 = N14 + (H2 * N24) + (H3 * N34) + (H4 * N44) + (H5 * N54) + (H6 * N64) + (H7 * N74) + (H8 * N84) + ( H9 * N94) + (H10 * N104) + (H11 * N114) + (H12 * N124) + (H13 * N134) + (H14 * N144) + (H15 * N154) + ( H16 * N164) + (H17 * N174) + (H18 * N184) + (H19 * N194) + (H20 * N204)
 # Note_5 = N15 + (H2 * N25) + (H3 * N35) + (H4 * N45) + (H5 * N55) + (H6 * N65) + (H7 * N75) + (H8 * N85) + ( H9 * N95) + (H10 * N105) + (H11 * N115) + (H12 * N125) + (H13 * N135) + (H14 * N145) + (H15 * N155) + ( H16 * N165) + (H17 * N175) + (H18 * N185) + (H19 * N195) + (H20 * N205)
 
-
-# region Easter Eggs
-# easter eggs from here on
-# if FUND == 69:
-# print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
-# q1 = ""
-# i=1
-# x = 69
-# while q1 != "asdfg":
-# print(i * str(x))
-# i += 1
-# elif FUND == 420:
-# print("w0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO0oO")
-# q2 = ""
-# j=1
-# x2 = 420
-# while q2 != "asdfg":
-# print(j * str(x2))
-# j += 1
-# elif 2000 < FUND < 14500:
-# print("I hope you didn't summon all the bats")
-# elif FUND > 14500:
-# print("it ain't worth trying higher, i guess you get the point")
-# else:
-# print("pls read rules once more")
-
-
-# if H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20:
-# print("all same, lame choice")
-# print(f"only {H2}'s...")
-# elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.69:
-# print("......")
-# print(".......")
-# print("omg!! he only typed the sex number")
-# print("typing 0.420 won yield anything new, don't worry")
-# elif H2 == H3 == H4 == H5 == H6 == H7 == H8 == H9 == H10 == H11 == H12 == H13 == H14 == H15 == H16 == H17 == H18 == H19 == H20 == 0.42:
-# print("I told you")
-
-# endregion
