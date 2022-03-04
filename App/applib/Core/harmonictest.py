@@ -1,18 +1,15 @@
 import numpy as np
-import simpleaudio as sa
 
 from .constants import SAMPLE_RATE
 
-print("integral frequencies work best")
+# print("integral frequencies work best")
 # FUND = float(input("input fundamental frequency >>"))
-sample_rate = 44100
-T = 2
+T = 1
 #print(" rules for typing loudness of harmonics")
 #print("type in a value between 0 <= x <= 1")
-t = np.linspace(0, 2, int(2 * SAMPLE_RATE), False)
+t = np.linspace(0, T, int(T * SAMPLE_RATE), False)
 
 sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
 
 
 def variabledef(fund_freq):
@@ -84,131 +81,6 @@ def variabledef(fund_freq):
         + (H20 * N201)
         + (H21 * N211)
     )
-
-
-def sineval():
-    sldr_list[0] = 0
-    sldr_list[1] = 0
-    sldr_list[2] = 0
-    sldr_list[3] = 0
-    sldr_list[4] = 0
-    sldr_list[5] = 0
-    sldr_list[6] = 0
-    sldr_list[7] = 0
-    sldr_list[8] = 0
-    sldr_list[9] = 0
-    sldr_list[10] = 0
-    sldr_list[11] = 0
-    sldr_list[12] = 0
-    sldr_list[13] = 0
-    sldr_list[14] = 0
-    sldr_list[15] = 0
-    sldr_list[16] = 0
-    sldr_list[17] = 0
-    sldr_list[18] = 0
-    sldr_list[19] = 0
-
-    variabledef()
-
-
-def squareval():
-    sldr_list[0] = 0
-    sldr_list[1] = 0.3333333333333333
-    sldr_list[2] = 0
-    sldr_list[3] = 0.2
-    sldr_list[4] = 0
-    sldr_list[5] = 0.142857142857
-    sldr_list[6] = 0
-    sldr_list[7] = 0.1111111111111111
-    sldr_list[8] = 0
-    sldr_list[9] = 0.0909090909090909
-    sldr_list[10] = 0
-    sldr_list[11] = 0.0769230769
-    sldr_list[12] = 0
-    sldr_list[13] = 0.0666666666666666
-    sldr_list[14] = 0
-    sldr_list[15] = 0.0588235294118
-    sldr_list[16] = 0
-    sldr_list[17] = 0.0526315789474
-    sldr_list[18] = 0
-    sldr_list[19] = 0.047619047619
-
-    variabledef()
-
-
-def triangleval():
-    sldr_list[0] = 0
-    sldr_list[1] = 0.1111111111111111
-    sldr_list[2] = 0
-    sldr_list[3] = -0.04
-    sldr_list[4] = 0
-    sldr_list[5] = 0.0204081632653
-    sldr_list[6] = 0
-    sldr_list[7] = -0.012345678901234567890123456789
-    sldr_list[8] = 0
-    sldr_list[9] = 0.00826446280992
-    sldr_list[10] = 0
-    sldr_list[11] = -0.00591715976331
-    sldr_list[12] = 0
-    sldr_list[13] = 0.0044444444444444444444444
-    sldr_list[14] = 0
-    sldr_list[15] = -0.00346020761246
-    sldr_list[16] = 0
-    sldr_list[17] = 0.00277008310249
-    sldr_list[18] = 0
-    sldr_list[19] = -0.00226757369615
-
-    variabledef()
-
-
-def sawtoothval():
-    sldr_list[0] = 0.5
-    sldr_list[1] = 0.3333333333333333
-    sldr_list[2] = 0.25
-    sldr_list[3] = 0.2
-    sldr_list[4] = 0.16666666666666
-    sldr_list[5] = 0.142857142857
-    sldr_list[6] = 0.125
-    sldr_list[7] = 0.1111111111111111
-    sldr_list[8] = 0.1
-    sldr_list[9] = 0.0909090909090909
-    sldr_list[10] = 0.083333333333333
-    sldr_list[11] = 0.0769230769
-    sldr_list[12] = 0.07142857142847142857
-    sldr_list[13] = 0.0666666666666666
-    sldr_list[14] = 0.0626
-    sldr_list[15] = 0.0588235294118
-    sldr_list[16] = 0.055555555555555
-    sldr_list[17] = 0.0526315789474
-    sldr_list[18] = 0.05
-    sldr_list[19] = 0.047619047619
-
-    variabledef()
-
-
-def impulseval():
-    sldr_list[0] = -0.95
-    sldr_list[1] = -0.9
-    sldr_list[2] = 0.85
-    sldr_list[3] = 0.8
-    sldr_list[4] = -0.75
-    sldr_list[5] = -0.7
-    sldr_list[6] = 0.65
-    sldr_list[7] = 0.6
-    sldr_list[8] = -0.55
-    sldr_list[9] = -0.5
-    sldr_list[10] = 0.45
-    sldr_list[11] = 0.4
-    sldr_list[12] = -0.35
-    sldr_list[13] = -0.3
-    sldr_list[14] = 0.25
-    sldr_list[15] = 0.2
-    sldr_list[16] = -0.15
-    sldr_list[17] = -0.1
-    sldr_list[18] = 0.05
-    sldr_list[19] = 0
-
-    variabledef()
 
 
 def freqassignfunc(numb, value):

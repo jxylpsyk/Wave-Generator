@@ -1,6 +1,7 @@
 # Used to visualize the wave function
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 # TODO: Implement interface module
 
@@ -36,6 +37,9 @@ class Grapher:
         # converts a float value to the integer above it
         if not single_osc.is_integer():
             single_osc = round(single_osc + 0.5)
+
+        if np.max(user_arr) > 1:
+            user_arr = user_arr/np.max(user_arr)
 
         cut_arr = user_arr[:int(single_osc)]
         plt.cla()
