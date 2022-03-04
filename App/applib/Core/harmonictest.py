@@ -86,6 +86,9 @@ def variabledef(fund_freq):
 def freqassignfunc(numb, value):
     sldr_list[(int(numb) - 2)] = float(value)
 
+def return_sldr_list():
+    return sldr_list
+
 # INTERFACE CODE FOR TESTING
 
 """

@@ -14,21 +14,19 @@ class Wave:
         self.audio_arr = audio_arr
         self.freq = fund_freq
 
-    # Call this to set a pre-defined audio array to the Wave object instead of creating one
-    def set_audio(self, audio_arr):
-        self.audio_arr = audio_arr
-
-    def set_freq(self, freq):
-        self.freq = freq
-
     # Call this to save the current wave
-    def save_audio(self, wave_name) -> None:
+    def save_audio(self, slider_list, wave_name) -> None:
 
         # since ndarray is not json serializable, the array is cast into a list
-        mss.save_info(list(self.audio_arr), wave_name)
+        mss.save_info(slider_list, wave_name)
 
     # Call this when user selects a saved wave
-    def load_audio(self, wave_name) -> None:
+    def return_list(self, wave_name) -> None:
 
         # since array is stored as a list, when fetching, the data is cast to an ndarray
-        self.audio_arr = nparray(mss.get_info(wave_name))
+        # self.audio_arr = nparray(mss.get_info(wave_name))
+
+        return mss.get_info(wave_name)
+
+    def delete_list(self, wave_name):
+        mss.del_info(wave_name)

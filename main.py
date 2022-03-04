@@ -14,10 +14,6 @@ from App.applib.utils import Grapher, messenger, wav_saver, luminosity
 # The main premise of the project is for the user to do manipulations on two sound waves
 # Therefore, there are two waves for the user to play around with
 
-# The two waves are set to A440 sine waves by default
-
-# Make the button color user editable, after the move to GUI folder, import luminosity
-
 focus_wave = Wave(make_default_wave('sin', DEFAULT_FREQ, 1), fund_freq=DEFAULT_FREQ)
 
 #GUI
@@ -34,27 +30,6 @@ canvas.place(x=-5, y=-5)
 grapher = Grapher.Grapher()
 
 # region Classes
-'''
-
-class image:
-    def __init__(self,relPth, x_codds, y_codds):
-        self.x_codds = x_codds
-        self.y_codds = y_codds
-        self.graph = Image.open(relPth)
-        self.graph = ImageTk.PhotoImage(graph)
-        self.graph_label = tk.label(image=graph)
-        self.graph_label.image = graph
-        self.graph_label.place(x=self.x_codds, y=self.y_codds)
-
-    
-    def importImage(relPth, x_codds, y_codds):
-        graph = Image.open(relPth)
-        graph = ImageTk.PhotoImage(graph)
-        graph_label = tk.label(image=graph)
-        graph_label.image = graph
-        graph_label.grid(column=x_codds, row=y_codds)
-
-    '''
 
 class DropDown:
     def __init__(self, pos_x, pos_y) -> None:
@@ -80,16 +55,17 @@ class DropDown:
 
         self.root_frame.place(x=pos_x, y=pos_y)
 
-    def get_user_wave_name(self):
-        return self.selected_wave
-
     def __toggle_list(self):
+        self.__refresh_list()
         self.drop_state = not self.drop_state
 
         if self.drop_state:
             self.__create_list()
         else:
             self.__destroy_list()
+
+    def __refresh_list(self):
+        self.user_wave_names = messenger.get_user_waves()
 
     
     def __destroy_list(self):
@@ -116,11 +92,16 @@ class DropDown:
             
             self.list_frame = tk.Frame(root)
 
+            # * IMPORTANT
             def __change_label(wave_name):
                 self.selected_wave = wave_name.strip()
                 self.t_label['text'] = self.selected_wave
                 self.__destroy_list()
                 self.drop_state = not self.drop_state
+
+                everything_from_list(focus_wave.return_list(self.selected_wave)) # !!!!!!!!!!!SDAKJNSKJDCNd
+
+
 
             unindent_x =  self.dd_button.winfo_x() + self.pos_x - 179
             unindent_y =  self.dd_button.winfo_y() + self.pos_y + 24
@@ -129,7 +110,6 @@ class DropDown:
 
             self.list_frame.place(x=unindent_x, y=unindent_y)
 
-# TODO: Add a frequency text box
 class TextBox:
     def __init__(self, pos_x, pos_y, wdth, height):
         self.pos_x = pos_x
@@ -147,6 +127,9 @@ class TextBox:
 
     def return_text(self):
         return self.textbox.get(1.0, "end-1c")
+    
+    def clear_text(self):
+        self.textbox.delete('1.0', tk.END)
 
 class Vertical_Slider:
     def __init__(self, pos_x, pos_y):
@@ -169,235 +152,132 @@ class HarmonicsLabel:
         self.label.place(x=pos_x, y=pos_y)
 
 class WaveButton:
-    # style = ttk.style()
-    # style.configure('BW.TButton', foreground = '#ffffff', background = '#2610ff')
     def __init__(self, wave_name, position_x, position_y, freq):
         self.position_x = position_x
         self.position_y = position_y
+        self.sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
         def __set_slider_val(index, value):
             slider_list[index].set_val(value)
 
         def __focus():
-            # focus_wave.audio_arr = play_audio(make_default_wave(wave_name, freq, 1))
-            
             if wave_name.lower() == 'sin':
-                __set_slider_val(0, int(100 * 0))
-                ht.freqassignfunc(0+2, 0)
-                __set_slider_val(1, int(100 * 0))
-                ht.freqassignfunc(1+2, 0)
-                __set_slider_val(2, int(100 * 0))
-                ht.freqassignfunc(2+2, 0)
-                __set_slider_val(3, int(100 * 0))
-                ht.freqassignfunc(3+2, 0)
-                __set_slider_val(4, int(100 * 0))
-                ht.freqassignfunc(4+2, 0)
-                __set_slider_val(5, int(100 * 0))
-                ht.freqassignfunc(5+2, 0)
-                __set_slider_val(6, int(100 * 0))
-                ht.freqassignfunc(6+2, 0)
-                __set_slider_val(7, int(100 * 0))
-                ht.freqassignfunc(7+2, 0)
-                __set_slider_val(8, int(100 * 0))
-                ht.freqassignfunc(8+2, 0)
-                __set_slider_val(9, int(100 * 0))
-                ht.freqassignfunc(9+2, 0)
-                __set_slider_val(10, int(100 * 0))
-                ht.freqassignfunc(10+2, 0)
-                __set_slider_val(11, int(100 * 0))
-                ht.freqassignfunc(11+2, 0)
-                __set_slider_val(12, int(100 * 0))
-                ht.freqassignfunc(12+2, 0)
-                __set_slider_val(13, int(100 * 0))
-                ht.freqassignfunc(13+2, 0)
-                __set_slider_val(14, int(100 * 0))
-                ht.freqassignfunc(14+2, 0)
-                __set_slider_val(15, int(100 * 0))
-                ht.freqassignfunc(15+2, 0)
-                __set_slider_val(16, int(100 * 0))
-                ht.freqassignfunc(16+2, 0)
-                __set_slider_val(17, int(100 * 0))
-                ht.freqassignfunc(17+2, 0)
-                __set_slider_val(18, int(100 * 0))
-                ht.freqassignfunc(18+2, 0)
-                __set_slider_val(19, int(100 * 0))
-                ht.freqassignfunc(19+2, 0)
 
+                self.sldr_list[0] = 0
+                self.sldr_list[1] = 0
+                self.sldr_list[2] = 0
+                self.sldr_list[3] = 0
+                self.sldr_list[4] = 0
+                self.sldr_list[5] = 0
+                self.sldr_list[6] = 0
+                self.sldr_list[7] = 0
+                self.sldr_list[8] = 0
+                self.sldr_list[9] = 0
+                self.sldr_list[10] = 0
+                self.sldr_list[11] = 0
+                self.sldr_list[12] = 0
+                self.sldr_list[13] = 0
+                self.sldr_list[14] = 0
+                self.sldr_list[15] = 0
+                self.sldr_list[16] = 0
+                self.sldr_list[17] = 0
+                self.sldr_list[18] = 0
+                self.sldr_list[19] = 0
 
+            
             elif wave_name.lower() == 'square':
-                __set_slider_val(0, int(100 * 0))
-                ht.freqassignfunc(0+2, 0)
-                __set_slider_val(1, int(100 * 0.3333333333333333))
-                ht.freqassignfunc(1+2, 0.3333333333333333)
-                __set_slider_val(2, int(100 * 0))
-                ht.freqassignfunc(2+2, 0)
-                __set_slider_val(3, int(100 * 0.2))
-                ht.freqassignfunc(3+2, 0.2)
-                __set_slider_val(4, int(100 * 0))
-                ht.freqassignfunc(4+2, 0)
-                __set_slider_val(5, int(100 * 0.142857142857))
-                ht.freqassignfunc(5+2, 0.142857142857)
-                __set_slider_val(6, int(100 * 0))
-                ht.freqassignfunc(6+2, 0)
-                __set_slider_val(7, int(100 * 0.1111111111111111))
-                ht.freqassignfunc(7+2, 0.1111111111111111)
-                __set_slider_val(8, int(100 * 0))
-                ht.freqassignfunc(8+2, 0)
-                __set_slider_val(9, int(100 * 0.0909090909090909))
-                ht.freqassignfunc(9+2, 0.0909090909090909)
-                __set_slider_val(10, int(100 * 0))
-                ht.freqassignfunc(10+2, 0)
-                __set_slider_val(11, int(100 * 0.0769230769))
-                ht.freqassignfunc(11+2, 0.0769230769)
-                __set_slider_val(12, int(100 * 0))
-                ht.freqassignfunc(12+2, 0)
-                __set_slider_val(13, int(100 * 0.0666666666666666))
-                ht.freqassignfunc(13+2, 0.0666666666666666)
-                __set_slider_val(14, int(100 * 0))
-                ht.freqassignfunc(14+2, 0)
-                __set_slider_val(15, int(100 * 0.0588235294118))
-                ht.freqassignfunc(15+2, 0.0588235294118)
-                __set_slider_val(16, int(100 * 0))
-                ht.freqassignfunc(16+2, 0)
-                __set_slider_val(17, int(100 * 0.0526315789474))
-                ht.freqassignfunc(17+2, 0.0526315789474)
-                __set_slider_val(18, int(100 * 0))
-                ht.freqassignfunc(18+2, 0)
-                __set_slider_val(19, int(100 * 0.047619047619))
-                ht.freqassignfunc(19+2, 0.047619047619)
+                self.sldr_list[0] = 0
+                self.sldr_list[1] = 0.3333333333333333
+                self.sldr_list[2] = 0
+                self.sldr_list[3] = 0.2
+                self.sldr_list[4] = 0
+                self.sldr_list[5] = 0.142857142857
+                self.sldr_list[6] = 0
+                self.sldr_list[7] = 0.1111111111111111
+                self.sldr_list[8] = 0
+                self.sldr_list[9] = 0.0909090909090909
+                self.sldr_list[10] = 0
+                self.sldr_list[11] = 0.0769230769
+                self.sldr_list[12] = 0
+                self.sldr_list[13] = 0.0666666666666666
+                self.sldr_list[14] = 0
+                self.sldr_list[15] = 0.0588235294118
+                self.sldr_list[16] = 0
+                self.sldr_list[17] = 0.0526315789474
+                self.sldr_list[18] = 0
+                self.sldr_list[19] = 0.047619047619
 
-
+            
             elif wave_name.lower() == 'triangle':
-                __set_slider_val(0, int(100 * 0))
-                ht.freqassignfunc(0+2, 0)
-                __set_slider_val(1, int(100 * 0.1111111111111111))
-                ht.freqassignfunc(1+2, 0.1111111111111111)
-                __set_slider_val(2, int(100 * 0))
-                ht.freqassignfunc(2+2, 0)
-                __set_slider_val(3, -int(100 * 0.04))
-                ht.freqassignfunc(3+2, -0.04)
-                __set_slider_val(4, int(100 * 0))
-                ht.freqassignfunc(4+2, 0)
-                __set_slider_val(5, int(100 * 0.0204081632653))
-                ht.freqassignfunc(5+2, 0.0204081632653)
-                __set_slider_val(6, int(100 * 0))
-                ht.freqassignfunc(6+2, 0)
-                __set_slider_val(7, -int(100 * 0.012345678901234567890123456789))
-                ht.freqassignfunc(7+2, -0.012345678901234567890123456789)
-                __set_slider_val(8, int(100 * 0))
-                ht.freqassignfunc(8+2, 0)
-                __set_slider_val(9, int(100 * 0.00826446280992))
-                ht.freqassignfunc(9+2, 0.00826446280992)
-                __set_slider_val(10, int(100 * 0))
-                ht.freqassignfunc(10+2, 0)
-                __set_slider_val(11, -int(100 * 0.00591715976331))
-                ht.freqassignfunc(11+2, -0.00591715976331)
-                __set_slider_val(12, int(100 * 0))
-                ht.freqassignfunc(12+2, 0)
-                __set_slider_val(13, int(100 * 0.0044444444444444444444444))
-                ht.freqassignfunc(13+2, 0.0044444444444444444444444)
-                __set_slider_val(14, int(100 * 0))
-                ht.freqassignfunc(14+2, 0)
-                __set_slider_val(15, -int(100 * 0.00346020761246))
-                ht.freqassignfunc(15+2, -0.00346020761246)
-                __set_slider_val(16, int(100 * 0))
-                ht.freqassignfunc(16+2, 0)
-                __set_slider_val(17, int(100 * 0.00277008310249))
-                ht.freqassignfunc(17+2, 0.00277008310249)
-                __set_slider_val(18, int(100 * 0))
-                ht.freqassignfunc(18+2, 0)
-                __set_slider_val(19, -int(100 * 0.00226757369615))
-                ht.freqassignfunc(19+2, -0.00226757369615)
+                self.sldr_list[0] = 0
+                self.sldr_list[1] = 0.1111111111111111
+                self.sldr_list[2] = 0
+                self.sldr_list[3] = -0.04
+                self.sldr_list[4] = 0
+                self.sldr_list[5] = 0.0204081632653
+                self.sldr_list[6] = 0
+                self.sldr_list[7] = -0.012345678901234567890123456789
+                self.sldr_list[8] = 0
+                self.sldr_list[9] = 0.00826446280992
+                self.sldr_list[10] = 0
+                self.sldr_list[11] = -0.00591715976331
+                self.sldr_list[12] = 0
+                self.sldr_list[13] = 0.0044444444444444444444444
+                self.sldr_list[14] = 0
+                self.sldr_list[15] = -0.00346020761246
+                self.sldr_list[16] = 0
+                self.sldr_list[17] = 0.00277008310249
+                self.sldr_list[18] = 0
+                self.sldr_list[19] = -0.00226757369615
 
-
+            
             elif wave_name.lower() == 'sawtooth':
-                __set_slider_val(0, int(100 * 0.5))
-                ht.freqassignfunc(0+2, 0.5)
-                __set_slider_val(1, int(100 * 0.3333333333333333))
-                ht.freqassignfunc(1+2, 0.3333333333333333)
-                __set_slider_val(2, int(100 * 0.25))
-                ht.freqassignfunc(2+2, 0.25)
-                __set_slider_val(3, int(100 * 0.2))
-                ht.freqassignfunc(3+2, 0.2)
-                __set_slider_val(4, int(100 * 0.16666666666666))
-                ht.freqassignfunc(4+2, 0.16666666666666)
-                __set_slider_val(5, int(100 * 0.142857142857))
-                ht.freqassignfunc(5+2, 0.142857142857)
-                __set_slider_val(6, int(100 * 0.125))
-                ht.freqassignfunc(6+2, 0.125)
-                __set_slider_val(7, int(100 * 0.1111111111111111))
-                ht.freqassignfunc(7+2, 0.1111111111111111)
-                __set_slider_val(8, int(100 * 0.1))
-                ht.freqassignfunc(8+2, 0.1)
-                __set_slider_val(9, int(100 * 0.0909090909090909))
-                ht.freqassignfunc(9+2, 0.0909090909090909)
-                __set_slider_val(10, int(100 * 0.083333333333333))
-                ht.freqassignfunc(10+2, 0.083333333333333)
-                __set_slider_val(11, int(100 * 0.0769230769))
-                ht.freqassignfunc(11+2, 0.0769230769)
-                __set_slider_val(12, int(100 * 0.07142857142847142857))
-                ht.freqassignfunc(12+2, 0.07142857142847142857)
-                __set_slider_val(13, int(100 * 0.0666666666666666))
-                ht.freqassignfunc(13+2, 0.0666666666666666)
-                __set_slider_val(14, int(100 * 0.0626))
-                ht.freqassignfunc(14+2, 0.0626)
-                __set_slider_val(15, int(100 * 0.0588235294118))
-                ht.freqassignfunc(15+2, 0.0588235294118)
-                __set_slider_val(16, int(100 * 0.055555555555555))
-                ht.freqassignfunc(16+2, 0.055555555555555)
-                __set_slider_val(17, int(100 * 0.0526315789474))
-                ht.freqassignfunc(17+2, 0.0526315789474)
-                __set_slider_val(18, int(100 * 0.05))
-                ht.freqassignfunc(18+2, 0.05)
-                __set_slider_val(19, int(100 * 0.047619047619))
-                ht.freqassignfunc(19+2, 0.047619047619)
+                self.sldr_list[0] = 0.5
+                self.sldr_list[1] = 0.3333333333333333
+                self.sldr_list[2] = 0.25
+                self.sldr_list[3] = 0.2
+                self.sldr_list[4] = 0.16666666666666
+                self.sldr_list[5] = 0.142857142857
+                self.sldr_list[6] = 0.125
+                self.sldr_list[7] = 0.1111111111111111
+                self.sldr_list[8] = 0.1
+                self.sldr_list[9] = 0.0909090909090909
+                self.sldr_list[10] = 0.083333333333333
+                self.sldr_list[11] = 0.0769230769
+                self.sldr_list[12] = 0.07142857142847142857
+                self.sldr_list[13] = 0.0666666666666666
+                self.sldr_list[14] = 0.0626
+                self.sldr_list[15] = 0.0588235294118
+                self.sldr_list[16] = 0.055555555555555
+                self.sldr_list[17] = 0.0526315789474
+                self.sldr_list[18] = 0.05
+                self.sldr_list[19] = 0.047619047619
 
-
+            
             elif wave_name.lower() == 'impulse':
-                __set_slider_val(0, -int(100 * 0.95))
-                ht.freqassignfunc(0+2, -0.95)
-                __set_slider_val(1, -int(100 * 0.9))
-                ht.freqassignfunc(1+2, -0.9)
-                __set_slider_val(2, int(100 * 0.85))
-                ht.freqassignfunc(2+2, 0.85)
-                __set_slider_val(3, int(100 * 0.8))
-                ht.freqassignfunc(3+2, 0.8)
-                __set_slider_val(4, -int(100 * 0.75))
-                ht.freqassignfunc(4+2, -0.75)
-                __set_slider_val(5, -int(100 * 0.7))
-                ht.freqassignfunc(5+2, -0.7)
-                __set_slider_val(6, int(100 * 0.65))
-                ht.freqassignfunc(6+2, 0.65)
-                __set_slider_val(7, int(100 * 0.6))
-                ht.freqassignfunc(7+2, 0.6)
-                __set_slider_val(8, -int(100 * 0.55))
-                ht.freqassignfunc(8+2, -0.55)
-                __set_slider_val(9, -int(100 * 0.5))
-                ht.freqassignfunc(9+2, -0.5)
-                __set_slider_val(10, int(100 * 0.45))
-                ht.freqassignfunc(10+2, 0.45)
-                __set_slider_val(11, int(100 * 0.4))
-                ht.freqassignfunc(11+2, 0.4)
-                __set_slider_val(12, -int(100 * 0.35))
-                ht.freqassignfunc(12+2, -0.35)
-                __set_slider_val(13, -int(100 * 0.3))
-                ht.freqassignfunc(13+2, -0.3)
-                __set_slider_val(14, int(100 * 0.25))
-                ht.freqassignfunc(14+2, 0.25)
-                __set_slider_val(15, int(100 * 0.2))
-                ht.freqassignfunc(15+2, 0.2)
-                __set_slider_val(16, -int(100 * 0.15))
-                ht.freqassignfunc(16+2, -0.15)
-                __set_slider_val(17, -int(100 * 0.1))
-                ht.freqassignfunc(17+2, -0.1)
-                __set_slider_val(18, int(100 * 0.05))
-                ht.freqassignfunc(18+2, 0.05)
-                __set_slider_val(19, int(100 * 0))
-                ht.freqassignfunc(19+2, 0)
+                self.sldr_list[0] = -0.95
+                self.sldr_list[1] = -0.9
+                self.sldr_list[2] = 0.85
+                self.sldr_list[3] = 0.8
+                self.sldr_list[4] = -0.75
+                self.sldr_list[5] = -0.7
+                self.sldr_list[6] = 0.65
+                self.sldr_list[7] = 0.6
+                self.sldr_list[8] = -0.55
+                self.sldr_list[9] = -0.5
+                self.sldr_list[10] = 0.45
+                self.sldr_list[11] = 0.4
+                self.sldr_list[12] = -0.35
+                self.sldr_list[13] = -0.3
+                self.sldr_list[14] = 0.25
+                self.sldr_list[15] = 0.2
+                self.sldr_list[16] = -0.15
+                self.sldr_list[17] = -0.1
+                self.sldr_list[18] = 0.05
+                self.sldr_list[19] = 0
 
-            focus_wave.audio_arr = ht.variabledef(focus_wave.freq)
-            update_graph(focus_wave)
-            play_audio(focus_wave.audio_arr)
+            everything_from_list(self.sldr_list)
+
 
         self.button = tk.Button(
             root,
@@ -436,6 +316,16 @@ def update_graph(user_wave):
     # temp.destroy()
     main_graph.place(x=0, y=0)
 
+def everything_from_list(slider_list_ll):
+    for i, val in enumerate(slider_list_ll):
+        slider_list[i].set_val( int(val * 100) )
+        ht.freqassignfunc(i+2, val)
+    
+    focus_wave.audio_arr = ht.variabledef(focus_wave.freq)
+    update_graph(focus_wave)
+    play_audio(focus_wave.audio_arr)
+
+# bind events to sliders
 def HoverBind(widget, slider_no):
 
     def enter(event):
@@ -453,6 +343,7 @@ def HoverBind(widget, slider_no):
     widget.bind('<ButtonRelease-1>', leave)
     widget.bind('<ButtonRelease-2>', leave)
 
+# make sliders
 def render_sliders():
 
     Slider_List = [] # [1, 2, 3, 4, …]
@@ -465,6 +356,7 @@ def render_sliders():
     
     return Slider_List
 
+# update frequencies
 def set_freq():
     if freq_box.return_text().strip() != '':
         freq = int(freq_box.return_text())
@@ -473,10 +365,10 @@ def set_freq():
 
         update_graph(focus_wave)
 
-
-
-
-
+def save_necessities():
+    
+    focus_wave.save_audio(ht.return_sldr_list(), txtinp.return_text() if txtinp.return_text().strip() != '' else dd.selected_wave) #!?!?!?!?!?!?!??!?!?!?!!?!?!?!?!?!
+    txtinp.clear_text()
 
 if SYSTEM_OS == "Darwin":
     '''!!!OsX!!!'''
@@ -487,13 +379,16 @@ if SYSTEM_OS == "Darwin":
     freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
 
     # load_btn = UIButton('Load', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 700)  
+    dd = DropDown(600, 200)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
-                            lambda: focus_wave.save_audio(txtinp.return_text())
-                            if txtinp.return_text() != '' else 0)
+                            lambda: save_necessities())
     
+    del_btn = UIButton('Delete', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 370, lambda: focus_wave.delete_list(dd.selected_wave) if dd.selected_wave !='' else 0)
+
     save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
                             lambda: wav_saver.save_as_wav(focus_wave.audio_arr))
+    
 
     slider_list = render_sliders()
 
@@ -508,8 +403,6 @@ if SYSTEM_OS == "Darwin":
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 70, WINDOW_HEIGHT - 750, focus_wave.freq)
 
     play_btn = UIButton('Play', 500, 500, lambda: play_audio(focus_wave.audio_arr))
-
-    dd = DropDown(200, 200)
 
 
 
