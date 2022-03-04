@@ -65,8 +65,10 @@ def del_info(wave_name):
     with open(path_to_json_wave, 'r') as openfile:
 
         user_data = json.load(openfile)
-
-    user_data["user-waves"].pop(wave_name)
+    try:
+        user_data["user-waves"].pop(wave_name)
+    except KeyError:
+        return 
 
     with open("App/applib/Json-lib/user_data.json", "w") as outfile:
         json.dump(user_data, outfile, indent=4)

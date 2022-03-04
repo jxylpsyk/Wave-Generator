@@ -1,7 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import sys
 
 from App.applib.Core.wave_class import Wave
 from App.applib.Core.constants import *
@@ -157,9 +156,6 @@ class WaveButton:
         self.position_y = position_y
         self.sldr_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-        def __set_slider_val(index, value):
-            slider_list[index].set_val(value)
-
         def __focus():
             if wave_name.lower() == 'sin':
 
@@ -279,6 +275,7 @@ class WaveButton:
             everything_from_list(self.sldr_list)
 
 
+
         self.button = tk.Button(
             root,
             width=BUTTON_WIDTH,
@@ -315,6 +312,8 @@ def update_graph(user_wave):
     # main_graph = temp
     # temp.destroy()
     main_graph.place(x=0, y=0)
+
+    return 1
 
 def everything_from_list(slider_list_ll):
     for i, val in enumerate(slider_list_ll):
