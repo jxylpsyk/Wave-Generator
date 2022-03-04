@@ -49,7 +49,12 @@ WINDOW_WIDTH = 1400
 MyNewCuteConstant = 64
 
 from ..utils import messenger
-user_dict = messenger.get_user_settings()
+#user_dict = messenger.get_user_settings()
+user_dict = {
+    "bg-color": "#182839",
+    "fg-color": "#123456",
+    "line-color": "#ffffff"
+}
 
 BG_COLOR = user_dict["bg-color"]
 FG_COLOR = user_dict["fg-color"]
