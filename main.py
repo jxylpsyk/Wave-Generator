@@ -507,6 +507,8 @@ if SYSTEM_OS == "Darwin":
     
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 70, WINDOW_HEIGHT - 750, focus_wave.freq)
 
+    play_btn = UIButton('Play', 500, 500, lambda: play_audio(focus_wave.audio_arr))
+
     dd = DropDown(200, 200)
 
 
@@ -544,6 +546,8 @@ elif SYSTEM_OS == "Linux":
 
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 70, WINDOW_HEIGHT - 750, focus_wave.freq)
 
+    play_btn = UIButton('Play', 500, 500, lambda: play_audio(focus_wave.audio_arr))
+
     dd = DropDown(200, 200)
 
 
@@ -574,6 +578,8 @@ elif SYSTEM_OS == "Windows":
     txtbx4 = WaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, focus_wave.freq)
 
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 70, WINDOW_HEIGHT - 750, focus_wave.freq)
+
+    play_btn = UIButton('Play', 500, 500, lambda: play_audio(focus_wave.audio_arr))
 
     dd = DropDown(200, 200)
 
