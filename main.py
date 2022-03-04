@@ -442,11 +442,16 @@ def HoverBind(widget, slider_no):
         ht.freqassignfunc(slider_no, widget.get() / 100)
         
     def leave(event):
+        ht.freqassignfunc(slider_no, widget.get() / 100)
         focus_wave.audio_arr = ht.variabledef(focus_wave.freq)
         update_graph(focus_wave)
 
     widget.bind('<B1-Motion>', enter)
+    widget.bind('<1>', enter)
+    widget.bind('<B2-Motion>', enter)
+    widget.bind('<2>', enter)
     widget.bind('<ButtonRelease-1>', leave)
+    widget.bind('<ButtonRelease-2>', leave)
 
 def render_sliders():
 
