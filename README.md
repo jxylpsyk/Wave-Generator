@@ -1,4 +1,2 @@
-# Project-Beta
-3 bache ne kuch kiya hai
-
-noicenoice
+# **Project-Beta**
+A comp prj by Parin Kumar S, Advaith Giridhar Gopalan Iyengar Gopalan Krishnan and Anirban Deshmukh
