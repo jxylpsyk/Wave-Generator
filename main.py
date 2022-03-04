@@ -374,8 +374,8 @@ if SYSTEM_OS == "Darwin":
 
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
 
-    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 590, 6, 1)
-    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 479, WINDOW_HEIGHT - 590, set_freq)
+    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 479, WINDOW_HEIGHT - 600, set_freq)
 
     # load_btn = UIButton('Load', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 700)
     dd = DropDown(600, 200)
@@ -383,10 +383,10 @@ if SYSTEM_OS == "Darwin":
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                        lambda: save_necessities())
 
-    del_btn = UIButton('Delete', WINDOW_WIDTH - 379, WINDOW_HEIGHT - 590,
+    del_btn = UIButton('Delete', WINDOW_WIDTH - 379, WINDOW_HEIGHT - 600,
                        lambda: focus_wave.delete_list(dd.selected_wave) if dd.selected_wave != '' else 0)
 
-    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 600,
                             lambda: wav_saver.save_as_wav(focus_wave.audio_arr))
 
     slider_list = render_sliders()
@@ -401,7 +401,7 @@ if SYSTEM_OS == "Darwin":
 
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 159, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    play_btn = UIButton('Play', WINDOW_WIDTH - 269, WINDOW_HEIGHT - 590, lambda: play_audio(focus_wave.audio_arr))
+    play_btn = UIButton('Play', WINDOW_WIDTH - 269, WINDOW_HEIGHT - 600, lambda: play_audio(focus_wave.audio_arr))
 
     update_graph(focus_wave)
 
@@ -413,19 +413,19 @@ elif SYSTEM_OS == "Linux":
 
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 54, 2)
 
-    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 590, 6, 1)
-    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 479, WINDOW_HEIGHT - 590, set_freq)
+    freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 479, WINDOW_HEIGHT - 600, set_freq)
 
     # load_btn = UIButton('Load', WINDOW_WIDTH - 500, WINDOW_HEIGHT - 700)
     dd = DropDown(600, 200)
 
-    saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
+    saveBx1 = UIButton('Save', WINDOW_WIDTH - 130, WINDOW_HEIGHT - 670,
                        lambda: save_necessities())
 
-    del_btn = UIButton('Delete', WINDOW_WIDTH - 379, WINDOW_HEIGHT - 590,
+    del_btn = UIButton('Delete', WINDOW_WIDTH - 379, WINDOW_HEIGHT - 600,
                        lambda: focus_wave.delete_list(dd.selected_wave) if dd.selected_wave != '' else 0)
 
-    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 600,
                             lambda: wav_saver.save_as_wav(focus_wave.audio_arr))
 
     slider_list = render_sliders()
@@ -440,7 +440,7 @@ elif SYSTEM_OS == "Linux":
 
     txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 159, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    play_btn = UIButton('Play', WINDOW_WIDTH - 269, WINDOW_HEIGHT - 590, lambda: play_audio(focus_wave.audio_arr))
+    play_btn = UIButton('Play', WINDOW_WIDTH - 269, WINDOW_HEIGHT - 600, lambda: play_audio(focus_wave.audio_arr))
 
     update_graph(focus_wave)
 
@@ -456,7 +456,7 @@ elif SYSTEM_OS == "Windows":
                             lambda: focus_wave.save_audio(txtinp.return_text())
                             if txtinp.return_text() != '' else 0)
     
-    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 590,
+    save_wav_btn = UIButton('Save as .wav', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 600,
                         lambda: wav_saver.save_as_wav(focus_wave))
 
     slider_list = render_sliders()
