@@ -1,1 +1,0 @@
-@REM batla aloominum ladders
