@@ -450,7 +450,7 @@ elif SYSTEM_OS == "Windows":
     txtinp = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 670, 50, 2)
 
     freq_box = TextBox(WINDOW_WIDTH - 580, WINDOW_HEIGHT - 600, 6, 1)
-    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 520, WINDOW_HEIGHT - 600, set_freq)
+    freq_set_btn = UIButton('Set', WINDOW_WIDTH - 475, WINDOW_HEIGHT - 600, set_freq)
 
     saveBx1 = UIButton('Save', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 670,
                             lambda: focus_wave.save_audio(txtinp.return_text())
@@ -463,15 +463,15 @@ elif SYSTEM_OS == "Windows":
 
     txtbx1 = WaveButton('sawtooth', WINDOW_WIDTH - 580, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    txtbx2 = WaveButton('square', WINDOW_WIDTH - 440, WINDOW_HEIGHT - 750, focus_wave.freq)
+    txtbx2 = WaveButton('square', WINDOW_WIDTH - 475, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    txtbx3 = WaveButton('sin', WINDOW_WIDTH - 300, WINDOW_HEIGHT - 750, focus_wave.freq)
+    txtbx3 = WaveButton('sin', WINDOW_WIDTH - 370, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    txtbx4 = WaveButton('triangle', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, focus_wave.freq)
+    txtbx4 = WaveButton('triangle', WINDOW_WIDTH - 265, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 70, WINDOW_HEIGHT - 750, focus_wave.freq)
+    txtbx5 = WaveButton('impulse', WINDOW_WIDTH - 160, WINDOW_HEIGHT - 750, focus_wave.freq)
 
-    play_btn = UIButton('Play', 500, 500, lambda: play_audio(focus_wave.audio_arr))
+    play_btn = UIButton('Play',WINDOW_WIDTH - 265,WINDOW_HEIGHT - 600, lambda: play_audio(focus_wave.audio_arr))
 
     dd = DropDown(200, 200)
 
